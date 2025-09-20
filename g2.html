@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กราฟแท่งแสดงจำนวนลูกค้า</title>
+    <!-- เรียกใช้งาน Chart.js จาก CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- เรียกใช้งาน Plugin สำหรับแสดงป้ายกำกับข้อมูล -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <!-- เรียกใช้งาน Tailwind CSS เพื่อความสวยงาม -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="container mx-auto p-4 md:p-8 lg:p-12">
+        <div class="bg-white p-6 rounded-2xl shadow-lg h-[75vh]">
+            <!-- Canvas สำหรับวาดกราฟ -->
+            <canvas id="customerChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // ดึง context ของ canvas element
+        const ctx = document.getElementById('customerChart').getContext('2d');
+
+        // Register the datalabels plugin to make it available for all charts
+        Chart.register(ChartDataLabels);
+
+        // ข้อมูลสำหรับกราฟ
+        const chartData = {
+            labels: [
+                '800 - 2,080 บาท',
+                '2,080 - 3,360 บาท',
+                '3,360 - 4,640 บาท',
+                '4,640 - 5,920 บาท',
+                '5,920 - 7,200 บาท'
+            ],
+            datasets: [{
+                label: 'จำนวนลูกค้า (คน)',
+                data: [6, 7, 2, 3, 2],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 99, 132, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1,
+                borderRadius: 8 // ทำให้ขอบแท่งมน
+            }]
+        };
+
+        // การตั้งค่าและสร้างกราฟ
+        const customerChart = new Chart(ctx, {
+            type: 'bar', // ประเภทของกราฟเป็นกราฟแท่ง
+            data: chartData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'จำนวนลูกค้าในแต่ละช่วงค่าใช้จ่าย',
+                        font: {
+                            size: 20,
+                            family: 'Sarabun',
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false // ซ่อน legend เพราะมี dataset เดียว
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y + ' คน';
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    // ตั้งค่าการแสดงป้ายกำกับบนแท่งกราฟ
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        offset: 4, // ระยะห่างจากขอบบนของแท่งกราฟ
+                        color: '#4A5568', // สีของตัวอักษร
+                        font: {
+                            size: 14,
+                            weight: 'bold',
+                            family: 'Sarabun'
+                        },
+                        formatter: (value, context) => {
+                            return value + ' คน'; // รูปแบบการแสดงผล
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10, // กำหนดค่าสูงสุดของแกน Y เพื่อขยายแกน
+                        title: {
+                            display: true,
+                            text: 'จำนวนลูกค้า (คน)',
+                            font: {
+                                size: 16,
+                                family: 'Sarabun'
+                            }
+                        },
+                        ticks: {
+                           stepSize: 1 // ให้แกน Y นับทีละ 1
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'ช่วงค่าใช้จ่าย (บาท)',
+                             font: {
+                                size: 16,
+                                family: 'Sarabun'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+

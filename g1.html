@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สัดส่วนลูกค้าตามแพลตฟอร์ม</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+        .pie-slice {
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .pie-slice:hover {
+            transform: scale(1.05);
+            filter: brightness(0.9);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen py-10">
+    <div class="w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 md:p-8">
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-2">
+            สัดส่วนลูกค้าตามแพลตฟอร์ม
+        </h1>
+        <p class="text-center text-gray-500 mb-8">
+            ข้อมูลสรุปจากลูกค้าทั้งหมด 20 คน
+        </p>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+            <div id="chart-container" class="flex-shrink-0"></div>
+            <div id="legend-container" class="w-full md:w-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        const data = [
+            { platform: "Shopee", count: 7 },
+            { platform: "Lazada", count: 5 },
+            { platform: "Facebook Shop", count: 3 },
+            { platform: "Amazon", count: 3 },
+            { platform: "JD Central", count: 2 },
+        ];
+
+        function drawChart() {
+            // --- 1. การตั้งค่าพื้นฐาน ---
+            const chartContainer = d3.select("#chart-container");
+            chartContainer.selectAll("*").remove();
+            
+            const legendContainer = d3.select("#legend-container");
+            legendContainer.selectAll("*").remove();
+
+            const totalCount = d3.sum(data, d => d.count);
+            const width = 350;
+            const height = 350;
+            const radius = Math.min(width, height) / 2;
+
+            // --- 2. การสร้าง SVG ---
+            const svg = chartContainer.append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+            // --- 3. การสร้าง Scales และ Generators ---
+            const colorScale = d3.scaleOrdinal(d3.schemeTableau10)
+                .domain(data.map(d => d.platform));
+
+            const pie = d3.pie()
+                .value(d => d.count)
+                .sort(null);
+
+            const arc = d3.arc()
+                .innerRadius(0)
+                .outerRadius(radius * 0.85);
+            
+            const labelArc = d3.arc()
+                .innerRadius(radius * 0.6)
+                .outerRadius(radius * 0.6);
+
+            const pieData = pie(data);
+
+            // --- 4. การวาดชิ้นส่วน Pie ---
+            const slices = svg.selectAll("path.pie-slice")
+                .data(pieData)
+                .enter()
+                .append("path")
+                .attr("class", "pie-slice")
+                .attr("fill", d => colorScale(d.data.platform))
+                .attr("stroke", "white")
+                .attr("stroke-width", 2);
+
+            // Animation
+            slices.transition()
+                .duration(1000)
+                .attrTween("d", function(d) {
+                    const i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+                    return function(t) { return arc(i(t)); };
+                });
+
+            // --- 5. การเพิ่มป้ายกำกับ (Label) ---
+            const labels = svg.selectAll("text.label")
+                .data(pieData)
+                .enter()
+                .append("text")
+                .attr("class", "label")
+                .attr("transform", d => `translate(${labelArc.centroid(d)})`)
+                .attr("dy", "0.35em")
+                .attr("text-anchor", "middle")
+                .style("font-size", "14px")
+                .style("font-weight", "600")
+                .attr("fill", "white")
+                .style("opacity", 0);
+            
+            labels.append("tspan")
+                .attr("x", 0)
+                .attr("y", "-0.6em")
+                .text(d => d.data.platform);
+                
+            labels.append("tspan")
+                .attr("x", 0)
+                .attr("y", "0.7em")
+                .text(d => `${((d.data.count / totalCount) * 100).toFixed(0)}%`);
+
+            labels.transition()
+                .duration(1000)
+                .delay(500)
+                .style("opacity", 1);
+
+
+            // --- 6. การสร้างคำอธิบาย (Legend) ---
+            const legendItems = legendContainer.selectAll(".legend-item")
+                .data(data)
+                .enter()
+                .append("div")
+                .attr("class", "legend-item");
+
+            legendItems.append("div")
+                .attr("class", "legend-color")
+                .style("background-color", d => colorScale(d.platform));
+
+            legendItems.append("span")
+                .text(d => `${d.platform} (${d.count} คน)`);
+        }
+
+        drawChart();
+        window.addEventListener('resize', drawChart);
+    </script>
+</body>
+</html>
+
