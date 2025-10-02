@@ -59,126 +59,498 @@
         "specialty": "Tourism Route Optimization"
       }
     ],
+   
     "publications": [
-      {
-        "year": 2023,
-        "title": "Double AMIS-ensemble deep learning for skin cancer classification",
-        "authors": [
-          "Kanchana Sethanan",
-          "Rapeepan Pitakaso",
-          "Thanatkit Srichok",
-          "Surajet Khonjun",
-          "Piyarat Thannipat",
-          "Surasak Wanram",
-          "Chawis Boonmee",
-          "Sarayut Gonwirat",
-          "Prem Enkvetchakul",
-          "Chutchai Kaewta",
-          "Natthapong Nanthasamroeng"
-        ],
-        "journal": "Expert Systems with Applications • Elsevier BV",
-        "doi": "10.1016/j.eswa.2023.121047",
-        "url": "https://doi.org/10.1016/j.eswa.2023.121047"
-      },
-      {
-        "year": 2022,
-        "title": "Embedded AMIS-Deep Learning with Dialog-Based Object Query System for Multi-Class Tuberculosis Drug Response Classification",
-        "authors": [
-          "Chutinun Prasitpuriprecha",
-          "Rapeepan Pitakaso",
-          "Sarayut Gonwirat",
-          "Prem Enkvetchakul",
-          "Thanawadee Preeprem",
-          "Sirima Suvarnakuta Jantama",
-          "Chutchai Kaewta",
-          "Nantawatana Weerayuth",
-          "Thanatkij Srichok",
-          "Surajet Khonjun",
-          "Natthapong Nanthasamroeng"
-        ],
-        "journal": "Diagnostics • MDPI AG",
-        "doi": "10.3390/diagnostics12122980",
-        "url": "https://doi.org/10.3390/diagnostics12122980"
-      },
-      {
-        "year": 2022,
-        "title": "Drug-Resistant Tuberculosis Treatment Recommendation, and Multi-Class Tuberculosis Detection and Classification Using Ensemble Deep Learning-Based System",
-        "authors": [
-          "Chutinun Prasitpuriprecha",
-          "Sirima Suvarnakuta Jantama",
-          "Thanawadee Preeprem",
-          "Rapeepan Pitakaso",
-          "Thanatkij Srichok",
-          "Surajet Khonjun",
-          "Nantawatana Weerayuth",
-          "Sarayut Gonwirat",
-          "Prem Enkvetchakul",
-          "Chutchai Kaewta",
-          "Natthapong Nanthasamroeng"
-        ],
-        "journal": "Pharmaceuticals • MDPI AG",
-        "doi": "10.3390/ph16010013",
-        "url": "https://doi.org/10.3390/ph16010013"
-      },
-      {
-        "year": 2022,
-        "title": "A combined deep learning model based on the ideal distance weighting method for fake news detection",
-        "authors": [
-          "Sarayut Gonwirat",
-          "Atchara Choompol",
-          "Narong Wichapa"
-        ],
-        "journal": "International Journal of Data and Network Science • Growing Science",
-        "doi": "10.5267/j.ijdns.2022.1.003",
-        "url": "https://doi.org/10.5267/j.ijdns.2022.1.003"
-      },
-      {
-        "year": 2022,
-        "title": "DeblurGAN-CNN: Effective Image Denoising and Recognition for Noisy Handwritten Characters",
-        "authors": [
-          "Sarayut Gonwirat",
-          "Olarik Surinta"
-        ],
-        "journal": "IEEE Access • Institute of Electrical and Electronics Engineers (IEEE)",
-        "doi": "10.1109/access.2022.3201560",
-        "url": "https://doi.org/10.1109/access.2022.3201560"
-      },
-      {
-        "year": 2021,
-        "title": "Optimal weighted parameters of ensemble convolutional neural networks based on a differential evolution algorithm for enhancing pornographic image classification",
-        "authors": [
-          "Sarayut Gonwirat",
-          "Olarik Surinta"
-        ],
-        "journal": "Engineering and Applied Science Research • Faculty of Engineering, Khon Kaen University",
-        "doi": "https://doi.org/10.14456/easr.2021.58",
-        "url": "https://ph01.tci-thaijo.org/index.php/easr"
-      },
-      {
-        "year": 2020,
-        "title": "Improving Recognition of Thai Handwritten Characters with Deep Convolutional Neural Networks",
-        "authors": [
-          "Sarayut Gonwirat",
-          "Olarik Surinta"
-        ],
-        "journal": "Proceedings of the 2020 The 3rd International Conference on Information Science and System • ACM",
-        "doi": "10.1145/3388176.3388181",
-        "url": "https://doi.org/10.1145/3388176.3388181"
-      },
-      {
-        "year": 2020,
-        "title": "Plant Leaf Image Recognition using Multiple-grid Based Local Descriptor and Dimensionality Reduction Approach",
-        "authors": [
-          "Thipwimon Chompookham",
-          "Sarayuth Gonwirat",
-          "Siriwiwat Lata",
-          "Sirawan Phiphiphatphaisit",
-          "Olarik Surinta"
-        ],
-        "journal": "Proceedings of the 2020 The 3rd International Conference on Information Science and System • ACM",
-        "doi": "10.1145/3388176.3388180",
-        "url": "https://doi.org/10.1145/3388176.3388180"
-      }
-    ]
+          {
+            "year": 2025,
+            "title": "Fuzzy Logic-Enhanced Sustainable and Resilient EV Public Transit Systems for Rural Tourism",
+            "authors": [
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Peerawat Luesak",
+              "Chutchai Kaewta",
+              "Sarayut Gonwirat",
+              "Prem Enkvetchakul",
+              "Rerkchai Srivoramas"
+            ],
+            "journal": "IEEE Open Journal of Intelligent Transportation Systems • Institute of Electrical and Electronics Engineers (IEEE)",
+            "doi": "10.1109/ojits.2025.3554204",
+            "url": "https://doi.org/10.1109/ojits.2025.3554204"
+          },
+          {
+            "year": 2025,
+            "title": "Revolutionizing climbing perch disease management: AI-Driven solutions for sustainable aquaculture",
+            "authors": [
+              "Kosit Sriputhorn",
+              "Rapeepan Pitakaso",
+              "Surasak Matitopanum",
+              "Peerawat Luesak",
+              "Surajet Khonjun",
+              "Rungwasun Kraiklang",
+              "Chakat Chueadee",
+              "Sarayut Gonwirat"
+            ],
+            "journal": "Smart Agricultural Technology • Elsevier BV",
+            "doi": "10.1016/j.atech.2024.100746",
+            "url": "https://doi.org/10.1016/j.atech.2024.100746"
+          },
+          {
+            "year": 2025,
+            "title": "Advancing smart aquaculture: Cost-efficient strategies for climbing perch cultivation using AI-based models",
+            "authors": [
+              "Kosit Sriputhorn",
+              "Achara Jutagate",
+              "Surasak Matitopanum",
+              "Rungwasun Kraiklang",
+              "Rapeepan Pitakaso",
+              "Chakat Chueadee",
+              "Sarayut Gonwirat"
+            ],
+            "journal": "Smart Agricultural Technology • Elsevier BV",
+            "doi": "10.1016/j.atech.2025.101108",
+            "url": "https://doi.org/10.1016/j.atech.2025.101108"
+          },
+          {
+            "year": 2025,
+            "title": "Energy-efficient tugboat scheduling: A hybrid transformer-attention mechanism and artificial multiple intelligence system",
+            "authors": [
+              "Rapeepan Pitakaso",
+              "Kanchana Sethanan",
+              "Sarayut Gonwirat",
+              "Chen-Fu Chien",
+              "Ming K. Lim",
+              "Ming-Lang Tseng"
+            ],
+            "journal": "Computers & Industrial Engineering • Elsevier BV",
+            "doi": "10.1016/j.cie.2025.111112",
+            "url": "https://doi.org/10.1016/j.cie.2025.111112"
+          },
+          {
+            "year": 2025,
+            "title": "Fuzzy Logic-Enhanced Sustainable and Resilient EV Public Transit Systems for Rural Tourism",
+            "authors": [
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Peerawat Luesak",
+              "Chutchai Kaewta",
+              "Sarayut Gonwirat",
+              "Prem Enkvetchakul",
+              "Rerkchai Srivoramas"
+            ],
+            "journal": "IEEE Open Journal of Intelligent Transportation Systems • Institute of Electrical and Electronics Engineers (IEEE)",
+            "doi": "https://doi.org/10.3390/computers14030105",
+            "url": "https://doi.org/https://doi.org/10.3390/computers14030105"
+          },
+          {
+            "year": 2025,
+            "title": "Advanced AI techniques for root disease classification in dental X-rays using deep learning and metaheuristic approach",
+            "authors": [
+              "Prem Enkvetchakul",
+              "Surajet Khonjun",
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Peerawat Luesak",
+              "Chutchai Kaewta",
+              "Sarayut Gonwirat",
+              "Chawis Boonmee",
+              "Matus Noowattana",
+              "Thitinon Srisuwandee"
+            ],
+            "journal": "Intelligent Systems with Applications • Elsevier BV",
+            "doi": "10.1016/j.iswa.2025.200526",
+            "url": "https://doi.org/10.1016/j.iswa.2025.200526"
+          },
+          {
+            "year": 2024,
+            "title": "Two-Stage Ensemble Deep Learning Model for Precise Leaf Abnormality Detection in Centella asiatica",
+            "authors": [
+              "Budsaba Buakum",
+              "Monika Kosacka-Olejnik",
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Peerawat Luesak",
+              "Natthapong Nanthasamroeng",
+              "Sarayut Gonwirat"
+            ],
+            "journal": "AgriEngineering • MDPI AG",
+            "doi": "10.3390/agriengineering6010037",
+            "url": "https://doi.org/10.3390/agriengineering6010037"
+          },
+          {
+            "year": 2024,
+            "title": "Automated Classification of Agricultural Species through Parallel Artificial Multiple Intelligence System–Ensemble Deep Learning",
+            "authors": [
+              "Keartisak Sriprateep",
+              "Surajet Khonjun",
+              "Paulina Golinska-Dawson",
+              "Rapeepan Pitakaso",
+              "Peerawat Luesak",
+              "Thanatkij Srichok",
+              "Somphop Chiaranai",
+              "Sarayut Gonwirat",
+              "Budsaba Buakum"
+            ],
+            "journal": "Mathematics • MDPI AG",
+            "doi": "10.3390/math12020351",
+            "url": "https://doi.org/10.3390/math12020351"
+          },
+          {
+            "year": 2024,
+            "title": "Two-Stage Ensemble Deep Learning Model for Precise Leaf Abnormality Detection in Centella asiatica",
+            "authors": [
+              "Budsaba Buakum",
+              "Monika Kosacka-Olejnik",
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Peerawat Luesak",
+              "Natthapong Nanthasamroeng",
+              "Sarayut Gonwirat"
+            ],
+            "journal": "AgriEngineering • MDPI AG",
+            "doi": "https://doi.org/10.3390/computation11050100",
+            "url": "https://doi.org/https://doi.org/10.3390/computation11050100"
+          },
+          {
+            "year": 2024,
+            "title": "Plant production yield optimization and cost-effectiveness using an innovative artificial multiple intelligence system",
+            "authors": [
+              "Keartisak Sriprateep",
+              "Sarinya Sala-Ngam",
+              "Yottha Srithep",
+              "Surajet Khonjun",
+              "Paulina Golinska-Dawson",
+              "Thanatkij Srichok",
+              "Natthapong Nanthasamroeng",
+              "Rapeepan Pitakaso",
+              "Sarayut Gonwirat",
+              "Peerawat Luesak"
+            ],
+            "journal": "Annals of Operations Research • Springer Science and Business Media LLC",
+            "doi": "10.1007/s10479-024-05835-7",
+            "url": "https://doi.org/10.1007/s10479-024-05835-7"
+          },
+          {
+            "year": 2024,
+            "title": "Artificial Intelligence in enhancing sustainable practices for infectious municipal waste classification",
+            "authors": [
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Paulina Golinska-Dawson",
+              "Sarayut Gonwirat",
+              "Natthapong Nanthasamroeng",
+              "Chawis Boonmee",
+              "Ganokgarn Jirasirilerd",
+              "Peerawat Luesak"
+            ],
+            "journal": "Waste Management • Elsevier BV",
+            "doi": "10.1016/j.wasman.2024.05.002",
+            "url": "https://doi.org/10.1016/j.wasman.2024.05.002"
+          },
+          {
+            "year": 2024,
+            "title": "Optimizing safe and sustainable public transit for wellness tourism: Southeast Asian case studies",
+            "authors": [
+              "Rapeepan Pitakaso",
+              "Surajet Khonjun",
+              "Sarayut Gonwirat",
+              "Peerawat Luesak",
+              "Ganokgarn Jirasirilerd",
+              "Chawis Boonmee",
+              "Sairoong Dinkoksung",
+              "Natthapong Nanthasamroeng",
+              "Thanatkij Srichok"
+            ],
+            "journal": "Journal of Cleaner Production • Elsevier BV",
+            "doi": "10.1016/j.jclepro.2024.143656",
+            "url": "https://doi.org/10.1016/j.jclepro.2024.143656"
+          },
+          {
+            "year": 2024,
+            "title": "Multi-objective sustainability tourist trip design: An innovative approach for balancing tourists' preferences with key sustainability considerations",
+            "authors": [
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Sarayut Gonwirat",
+              "Natthapong Nanthasamroeng",
+              "Chawis Boonmee"
+            ],
+            "journal": "Journal of Cleaner Production • Elsevier BV",
+            "doi": "10.1016/j.jclepro.2024.141486",
+            "url": "https://doi.org/10.1016/j.jclepro.2024.141486"
+          },
+          {
+            "year": 2024,
+            "title": "Optimization-driven artificial intelligence-enhanced municipal waste classification system for disaster waste management",
+            "authors": [
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Paulina Golinska-Dawson",
+              "Kanchana Sethanan",
+              "Natthapong Nanthasamroeng",
+              "Sarayut Gonwirat",
+              "Peerawat Luesak",
+              "Chawis Boonmee"
+            ],
+            "journal": "Engineering Applications of Artificial Intelligence • Elsevier BV",
+            "doi": "10.1016/j.engappai.2024.108614",
+            "url": "https://doi.org/10.1016/j.engappai.2024.108614"
+          },
+          {
+            "year": 2024,
+            "title": "Application of AMIS-optimized vision transformer in identifying disease in Nile Tilapia",
+            "authors": [
+              "Chutchai Kaewta",
+              "Rapeepan Pitakaso",
+              "Surajet Khonjun",
+              "Thanatkij Srichok",
+              "Peerawat Luesak",
+              "Sarayut Gonwirat",
+              "Prem Enkvetchakul",
+              "Achara Jutagate",
+              "Tuanthong Jutagate"
+            ],
+            "journal": "Computers and Electronics in Agriculture • Elsevier BV",
+            "doi": "10.1016/j.compag.2024.109676",
+            "url": "https://doi.org/10.1016/j.compag.2024.109676"
+          },
+          {
+            "year": 2024,
+            "title": "Hybrid Adaptive Multiple Intelligence System (HybridAMIS) for classifying cannabis leaf diseases using deep learning ensembles",
+            "authors": [
+              "Keartisak Sriprateep",
+              "Surajet Khonjun",
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Sarinya Sala-Ngam",
+              "Yottha Srithep",
+              "Sarayut Gonwirat",
+              "Peerawat Luesak",
+              "Surasak Matitopanum",
+              "Chakat Chueadee",
+              "Rungwasun Kraiklang",
+              "Monika Kosacka-Olejnik"
+            ],
+            "journal": "Smart Agricultural Technology • Elsevier BV",
+            "doi": "10.1016/j.atech.2024.100535",
+            "url": "https://doi.org/10.1016/j.atech.2024.100535"
+          },
+          {
+            "year": 2024,
+            "title": "Integrating reinforcement learning and metaheuristics for safe and sustainable health tourist trip design problem",
+            "authors": [
+              "Rapeepan Pitakaso",
+              "Kanchana Sethanan",
+              "Chen-Fu Chien",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Natthapong Nanthasamroeng",
+              "Sarayut Gonwirat"
+            ],
+            "journal": "Applied Soft Computing • Elsevier BV",
+            "doi": "10.1016/j.asoc.2024.111719",
+            "url": "https://doi.org/10.1016/j.asoc.2024.111719"
+          },
+          {
+            "year": 2024,
+            "title": "Adaptive artificial multiple intelligence fusion system (A-AMIFS) for enhanced disease detection in Nile Tilapia",
+            "authors": [
+              "Achara Jutagate",
+              "Rapeepan Pitakaso",
+              "Surajet Khonjun",
+              "Thanatkij Srichok",
+              "Chutchai Kaewta",
+              "Peerawat Luesak",
+              "Sarayut Gonwirat",
+              "Prem Enkvetchakul",
+              "Tuantong Jutagate"
+            ],
+            "journal": "Aquaculture Reports • Elsevier BV",
+            "doi": "10.1016/j.aqrep.2024.102418",
+            "url": "https://doi.org/10.1016/j.aqrep.2024.102418"
+          },
+          {
+            "year": 2023,
+            "title": "Designing safety-oriented tourist routes for heterogeneous tourist groups using an artificial multi-intelligence system",
+            "authors": [
+              "Rapeepan Pitakaso",
+              "Natthapong Nanthasamroeng",
+              "Sarayut Gonwirat",
+              "Surajet Khonjun",
+              "Chutchai Kaewta",
+              "Thanatkit Srichok",
+              "Sairoong Dinkoksung"
+            ],
+            "journal": "Journal of Industrial and Production Engineering • Informa UK Limited",
+            "doi": "10.1080/21681015.2023.2248144",
+            "url": "https://doi.org/10.1080/21681015.2023.2248144"
+          },
+          {
+            "year": 2023,
+            "title": "Computer-aided diagnosis using embedded ensemble deep learning for multiclass drug-resistant tuberculosis classification",
+            "authors": [
+              "Kanchana Sethanan",
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Nantawatana Weerayuth",
+              "Chutinun Prasitpuriprecha",
+              "Thanawadee Preeprem",
+              "Sirima Suvarnakuta Jantama",
+              "Sarayut Gonwirat",
+              "Prem Enkvetchakul",
+              "Chutchai Kaewta",
+              "Natthapong Nanthasamroeng"
+            ],
+            "journal": "Frontiers in Medicine • Frontiers Media SA",
+            "doi": "10.3389/fmed.2023.1122222",
+            "url": "https://doi.org/10.3389/fmed.2023.1122222"
+          },
+          {
+            "year": 2023,
+            "title": "Double AMIS-ensemble deep learning for skin cancer classification",
+            "authors": [
+              "Kanchana Sethanan",
+              "Rapeepan Pitakaso",
+              "Thanatkit Srichok",
+              "Surajet Khonjun",
+              "Piyarat Thannipat",
+              "Surasak Wanram",
+              "Chawis Boonmee",
+              "Sarayut Gonwirat",
+              "Prem Enkvetchakul",
+              "Chutchai Kaewta",
+              "Natthapong Nanthasamroeng"
+            ],
+            "journal": "Expert Systems with Applications • Elsevier BV",
+            "doi": "10.1016/j.eswa.2023.121047",
+            "url": "https://doi.org/10.1016/j.eswa.2023.121047"
+          },
+          {
+            "year": 2022,
+            "title": "Embedded AMIS-Deep Learning with Dialog-Based Object Query System for Multi-Class Tuberculosis Drug Response Classification",
+            "authors": [
+              "Chutinun Prasitpuriprecha",
+              "Rapeepan Pitakaso",
+              "Sarayut Gonwirat",
+              "Prem Enkvetchakul",
+              "Thanawadee Preeprem",
+              "Sirima Suvarnakuta Jantama",
+              "Chutchai Kaewta",
+              "Nantawatana Weerayuth",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Natthapong Nanthasamroeng"
+            ],
+            "journal": "Diagnostics • MDPI AG",
+            "doi": "10.3390/diagnostics12122980",
+            "url": "https://doi.org/10.3390/diagnostics12122980"
+          },
+          {
+            "year": 2022,
+            "title": "Drug-Resistant Tuberculosis Treatment Recommendation, and Multi-Class Tuberculosis Detection and Classification Using Ensemble Deep Learning-Based System",
+            "authors": [
+              "Chutinun Prasitpuriprecha",
+              "Sirima Suvarnakuta Jantama",
+              "Thanawadee Preeprem",
+              "Rapeepan Pitakaso",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Nantawatana Weerayuth",
+              "Sarayut Gonwirat",
+              "Prem Enkvetchakul",
+              "Chutchai Kaewta",
+              "Natthapong Nanthasamroeng"
+            ],
+            "journal": "Pharmaceuticals • MDPI AG",
+            "doi": "10.3390/ph16010013",
+            "url": "https://doi.org/10.3390/ph16010013"
+          },
+          {
+            "year": 2022,
+            "title": "A combined deep learning model based on the ideal distance weighting method for fake news detection",
+            "authors": [
+              "Sarayut Gonwirat",
+              "Atchara Choompol",
+              "Narong Wichapa"
+            ],
+            "journal": "International Journal of Data and Network Science • Growing Science",
+            "doi": "10.5267/j.ijdns.2022.1.003",
+            "url": "https://doi.org/10.5267/j.ijdns.2022.1.003"
+          },
+          {
+            "year": 2022,
+            "title": "DeblurGAN-CNN: Effective Image Denoising and Recognition for Noisy Handwritten Characters",
+            "authors": [
+              "Sarayut Gonwirat",
+              "Olarik Surinta"
+            ],
+            "journal": "IEEE Access • Institute of Electrical and Electronics Engineers (IEEE)",
+            "doi": "10.1109/access.2022.3201560",
+            "url": "https://doi.org/10.1109/access.2022.3201560"
+          },
+          {
+            "year": 2022,
+            "title": "Embedded AMIS-Deep Learning with Dialog-Based Object Query System for Multi-Class Tuberculosis Drug Response Classification",
+            "authors": [
+              "Chutinun Prasitpuriprecha",
+              "Rapeepan Pitakaso",
+              "Sarayut Gonwirat",
+              "Prem Enkvetchakul",
+              "Thanawadee Preeprem",
+              "Sirima Suvarnakuta Jantama",
+              "Chutchai Kaewta",
+              "Nantawatana Weerayuth",
+              "Thanatkij Srichok",
+              "Surajet Khonjun",
+              "Natthapong Nanthasamroeng"
+            ],
+            "journal": "Diagnostics • MDPI AG",
+            "doi": "https://doi.org/10.3390/math12142283",
+            "url": "https://doi.org/https://doi.org/10.3390/math12142283"
+          },
+          {
+            "year": 2021,
+            "title": "Optimal weighted parameters of ensemble convolutional neural networks based on a differential evolution algorithm for enhancing pornographic image classification",
+            "authors": [
+              "Sarayut Gonwirat and Olarik Surinta"
+            ],
+            "journal": "Engineering and Applied Science Research • Faculty of Engineering, Khon Kaen University",
+            "doi": "https://doi.org/10.14456/easr.2021.58",
+            "url": "https://ph01.tci-thaijo.org/index.php/easr"
+          },
+          {
+            "year": 2020,
+            "title": "Improving Recognition of Thai Handwritten Characters with Deep Convolutional Neural Networks",
+            "authors": [
+              "Sarayut Gonwirat",
+              "Olarik Surinta"
+            ],
+            "journal": "Proceedings of the 2020 The 3rd International Conference on Information Science and System • ACM",
+            "doi": "10.1145/3388176.3388181",
+            "url": "https://doi.org/10.1145/3388176.3388181"
+          },
+          {
+            "year": 2020,
+            "title": "Plant Leaf Image Recognition using Multiple-grid Based Local Descriptor and Dimensionality Reduction Approach",
+            "authors": [
+              "Thipwimon Chompookham",
+              "Sarayuth Gonwirat",
+              "Siriwiwat Lata",
+              "Sirawan Phiphiphatphaisit",
+              "Olarik Surinta"
+            ],
+            "journal": "Proceedings of the 2020 The 3rd International Conference on Information Science and System • ACM",
+            "doi": "10.1145/3388176.3388180",
+            "url": "https://doi.org/10.1145/3388176.3388180"
+          }
+        ]
+      
   }
   
