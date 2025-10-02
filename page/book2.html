@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>เอกสารประกอบการอบรม - การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ</title>
+    <style>
+        :root {
+            --primary-color: #26a69a;
+            /* Teal from image */
+            --primary-dark: #00796b;
+            /* Darker teal */
+            --primary-gradient: linear-gradient(135deg, #26a69a, #00796b);
+            /* Teal gradient */
+            --secondary-color: #ffb74d;
+            /* Orange from image */
+            --accent-color: #ff9800;
+            /* Orange accent */
+            --accent-blue: #29b6f6;
+            /* Light blue accent */
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --light-gray: #ecf0f1;
+            --dark-gray: #7f8c8d;
+            --success-color: #2ecc71;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', 'Sarabun', 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="50" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.05)">import AI; AI.transform_government()</text></svg>');
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .book-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+
+        .book-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .book-info {
+            display: flex;
+            gap: 60px;
+            margin: 40px 0;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .book-cover {
+            flex: 0 0 450px;
+            position: relative;
+        }
+
+        .book-cover::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            transform: translateX(-29px) rotateY(35deg);
+            transform-origin: right;
+            z-index: -1;
+        }
+
+        .book-cover::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 600px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .cover-image:hover {
+            transform: scale(1.02);
+        }
+
+        .book-details {
+            flex: 1;
+            padding: 30px;
+            min-width: 500px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cover-content {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px dashed var(--light-gray);
+        }
+
+        .book-code {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .book-name {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        .book-author {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .book-quote {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-style: italic;
+            position: relative;
+            text-align: center;
+        }
+
+        .book-quote::before {
+            content: "";
+            font-size: 3rem;
+            position: absolute;
+            left: 5px;
+            top: -10px;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .book-quote strong {
+            display: block;
+            margin-top: 8px;
+            color: var(--primary-dark);
+        }
+
+        .university-info {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            margin-top: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+        }
+
+        .download-btn:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 152, 0, 0.4);
+        }
+
+        .course-description {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0 30px;
+            text-align: left;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .course-description p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .course-description strong {
+            color: var(--primary-dark);
+        }
+
+        .application-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .application-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .application-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .application-list li strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .toc {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter {
+            margin-bottom: 25px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .chapter-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .chapter-title::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            margin-right: 15px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%2326a69a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .chapter-list {
+            list-style: none;
+            margin-left: 45px;
+        }
+
+        .chapter-list li {
+            margin-bottom: 8px;
+            color: var(--dark-gray);
+            transition: color 0.2s ease;
+        }
+
+        .chapter-list li:hover {
+            color: var(--primary-color);
+        }
+
+        .details-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .details-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .details-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 20px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .details-list li ul {
+            list-style: none;
+            margin: 10px 0 0 30px;
+        }
+
+        .details-list li ul li {
+            margin-bottom: 8px;
+        }
+
+        .details-list li ul li::before {
+            content: "○";
+            color: var(--accent-color);
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .callout {
+            background-color: rgba(38, 166, 154, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .callout-title {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .callout p {
+            margin-bottom: 0;
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .book-info {
+                flex-direction: column;
+            }
+
+            .book-cover,
+            .book-details {
+                width: 100%;
+            }
+
+            .book-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* Optional: adjust width ratio between cover and details */
+        @media (min-width: 769px) {
+            .book-cover {
+                flex: 0.8;
+                /* Make cover slightly narrower than details */
+            }
+
+            .book-details {
+                flex: 1.2;
+                /* Make details slightly wider than cover */
+            }
+        }
+
+        /* Ensure the image doesn't get too tall on larger screens */
+        @media (min-width: 1200px) {
+            .cover-image {
+                height: 550px;
+                /* Slightly taller on big screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="book-title">เอกสารประกอบการอบรม</h1>
+            <h2 class="book-subtitle">การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ - Generative AI in Government Work</h2>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="book-info">
+            <div class="book-cover">
+                <div class="cover-image">
+                    <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; text-align: left; padding: 4px;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="background-color: rgba(255,255,255,0.2); padding: 1px; border-radius: 8px;">
+                                <img src="/cover/cover2.png" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            
+                        </div>
+                        
+                        <div style="text-align: center; margin: 20px 0;">
+                            <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 10px;">การใช้ปัญญาประดิษฐ์</h1>
+                            <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 20px;">ในทำงานภาครัฐ</h1>
+                            <div style="font-size: 1.3rem; margin-bottom: 10px;">สำนักงานส่งเสริมและสนับสนุนวิชาการ 6</div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 20px; background-color: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px;">
+                            <h2 style="font-size: 2.5rem; margin-bottom: 10px; font-weight: 700;">Generative AI</h2>
+                            <h2 style="font-size: 2.5rem; font-weight: 700;">in Government Work</h2>
+                        </div>
+                        
+                        <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: flex-end;">
+                            <div style="text-align: left;">
+                                <p style="font-size: 1.1rem; margin-bottom: 5px;">ดร. สรายุทธ กวิรัตน์</p>
+                                <p style="font-size: 0.9rem;">สาขาวิชาวิศวกรรมคอมพิวเตอร์</p>
+                                <p style="font-size: 0.9rem;">คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม</p>
+                                <p style="font-size: 0.9rem;">มหาวิทยาลัยกาฬสินธุ์</p>
+                            </div>
+                            <div>
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                                    <div style="width: 40px; height: 40px; background-color: rgba(255,183,77,0.8); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                        AI
+                                    </div>
+                                    <div style="width: 40px; height: 40px; background-color: rgba(255,183,77,0.8); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                        ML
+                                    </div>
+                                    <div style="width: 40px; height: 40px; background-color: rgba(255,183,77,0.8); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                        DL
+                                    </div>
+                                    <div style="width: 40px; height: 40px; background-color: rgba(255,183,77,0.8); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                                        GPT
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-details">
+                <div class="cover-content">
+                    <div class="book-name">การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ<br>Generative AI in Government Work</div>
+                    <p class="book-author">โดย: ดร. สรายุทธ กวิรัตน์</p>
+
+                    <div class="book-quote">
+                        "เปิดโลกปัญญาประดิษฐ์ สู่นวัตกรรมภาครัฐยุคดิจิทัล"
+                        <strong>ปรับระบบราชการให้ทันสมัย ด้วย AI ที่ช่วยลดข้อผิดพลาด ทำงานอัตโนมัติ และตัดสินใจบนข้อมูลที่แม่นยำ</strong>
+                    </div>
+
+                    <p class="university-info">สำนักงานส่งเสริมและสนับสนุนวิชาการ 6<br>มหาวิทยาลัยกาฬสินธุ์</p>
+
+                    <div style="text-align: center;">
+                        <a href="books/book2.pdf" class="download-btn" download>ดาวน์โหลดเอกสาร</a>
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="course-description">
+                <p><strong>คู่มือประกอบการอบรม "การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ"</strong> 
+                    เป็นทรัพยากรที่ออกแบบมาเพื่อช่วยให้บุคลากรภาครัฐเข้าใจและนำเทคโนโลยี AI มาประยุกต์ใช้ในการทำงานได้อย่างมีประสิทธิภาพ 
+                    เริ่มต้นจากพื้นฐานความเข้าใจเกี่ยวกับ AI ไปจนถึงการใช้งานเครื่องมือ Generative AI เพื่อเพิ่มประสิทธิภาพการบริการประชาชน</p>
+
+                <p>เอกสารนี้ครอบคลุมประเด็นสำคัญเกี่ยวกับ AI ในภาครัฐ เช่น:</p>
+
+                <ul class="application-list">
+                    <li><strong>พื้นฐาน AI:</strong> เข้าใจหลักการทำงาน ประเภท และวิวัฒนาการของ AI</li>
+                    <li><strong>การประยุกต์ใช้:</strong> ตัวอย่างการใช้ AI ในงานบริการภาครัฐและการบริหารจัดการ</li>
+                    <li><strong>Generative AI:</strong> เรียนรู้เกี่ยวกับ ChatGPT, DALL-E และเครื่องมืออื่นๆ</li>
+                    <li><strong>ข้อควรระวัง:</strong> ความเป็นส่วนตัว ความปลอดภัย และจริยธรรมในการใช้ AI</li>
+                </ul>
+
+                <p>เหมาะสำหรับบุคลากรภาครัฐทุกระดับ ตั้งแต่ผู้บริหารที่ต้องการเข้าใจศักยภาพของ AI ไปจนถึงเจ้าหน้าที่ปฏิบัติงานที่ต้องการนำ AI มาช่วยในการทำงานประจำวัน โดยไม่จำเป็นต้องมีพื้นฐานด้านเทคนิคหรือการเขียนโปรแกรมมาก่อน</p>
+            </div>
+
+            <div class="callout">
+                <div class="callout-title">💡 AI เปลี่ยนวิธีคิด</div>
+                <p>ยกระดับการบริการภาครัฐให้รวดเร็ว แม่นยำ และตอบโจทย์ประชาชน</p>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+                <div class="feature-card" style="flex: 1; min-width: 200px;">
+                    <div class="feature-title">เข้าใจพื้นฐาน AI</div>
+                    <p>ตั้งแต่ความหมาย ประเภท และเทคโนโลยีที่เกี่ยวข้อง</p>
+                </div>
+                <div class="feature-card" style="flex: 1; min-width: 200px;">
+                    <div class="feature-title">ลดภาระงานซ้ำซาก</div>
+                    <p>เพิ่มความแม่นยำในการวิเคราะห์และการตัดสินใจ</p>
+                </div>
+                <div class="feature-card" style="flex: 1; min-width: 200px;">
+                    <div class="feature-title">เครื่องมือขับเคลื่อนรัฐบาลดิจิทัล</div>
+                    <p>จาก Machine Learning สู่ Generative AI</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">บทที่ 1: บทนำเกี่ยวกับปัญญาประดิษฐ์และความสำคัญในงานภาครัฐ</h2>
+            <div class="chapter">
+                <h3 class="chapter-title">1.1 ปัญญาประดิษฐ์เบื้องต้น</h3>
+                <ul class="details-list">
+                    <li>AI (Artificial Intelligence) คือ ระบบที่สามารถเลียนแบบความสามารถของมนุษย์ เช่น การให้เหตุผล การตัดสินใจ และการเรียนรู้จากประสบการณ์</li>
+                    <li>วิวัฒนาการเริ่มตั้งแต่ยุค Alan Turing (1950) สู่ยุค Deep Learning และ GPT</li>
+                    <li>ประเภท AI:
+                        <ul>
+                        <li>Narrow AI – ใช้งานเฉพาะทาง เช่น Chatbot, ระบบแปลภาษา</li>
+                        <li>General AI – ยังอยู่ในขั้นวิจัย มีความสามารถแบบมนุษย์</li>
+                        <li>Super-intelligence – ความฉลาดเหนือมนุษย์ (แนวคิดในอนาคต)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <h3 class="chapter-title">1.2 ประโยชน์ของ AI สำหรับหน่วยงานภาครัฐ</h3>
+                <ul class="details-list">
+                    <li>ลดข้อผิดพลาดจากมนุษย์ เช่น การประมวลผลเอกสารและการคำนวณ</li>
+                    <li>ทำงานอัตโนมัติ เช่น ตรวจสอบเอกสาร บันทึกข้อมูล ตอบคำถาม</li>
+                    <li>วิเคราะห์ข้อมูลขนาดใหญ่ เช่น การคาดการณ์งบประมาณและความคิดเห็นประชาชน</li>
+                    <li>ยกระดับคุณภาพบริการ ลดภาระเจ้าหน้าที่ และเพิ่มความพึงพอใจประชาชน</li>
+                </ul>
+            </div>
+            <div class="chapter">
+                <h3 class="chapter-title">1.3 การเพิ่มประสิทธิภาพด้วย AI</h3>
+                <ul class="details-list">
+                    <li>ประมวลผลข้อมูลได้รวดเร็ว เช่น ตรวจสอบภาษีภายในไม่กี่ชั่วโมง</li>
+                    <li>ตัดสินใจได้ทันที เช่น แสดงข้อมูลวิเคราะห์แบบแดชบอร์ด</li>
+                    <li>บูรณาการข้อมูลหลายแหล่ง เช่น ระบบทะเบียนราษฎร์ ระบบสุขภาพ</li>
+                    <li>ลดต้นทุนระยะยาว เช่น การบำรุงรักษาเชิงป้องกัน และการใช้พลังงานอย่างมีประสิทธิภาพ</li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+        <div class="section">
+            <h2 class="section-title">สารบัญ</h2>
+            <div class="toc">
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 1: บทนำเกี่ยวกับปัญญาประดิษฐ์และความสำคัญในงานภาครัฐ</h3>
+                    <ul class="chapter-list">
+                        <li>1.1 ปัญญาประดิษฐ์เบื้องต้น</li>
+                        <li>1.2 ประโยชน์ของ AI สำหรับหน่วยงานภาครัฐ</li>
+                        <li>1.3 การเพิ่มประสิทธิภาพด้วย AI</li>
+                        <li>บทสรุป</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 2: พื้นฐานของเทคโนโลยี Generative AI และการใช้งานเบื้องต้น</h3>
+                    <ul class="chapter-list">
+                        <li>2.1 Generative AI เบื้องต้น</li>
+                        <li>2.2 Generative AI Tools ที่เป็นที่นิยม</li>
+                        <li>2.3 การใช้งานเบื้องต้นด้วยการฝึกปฏิบัติ (Workshop)</li>
+                        <li>บทสรุป</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 3: การประยุกต์ใช้ AI และเครื่องมือสำหรับภาครัฐ</h3>
+                    <ul class="chapter-list">
+                        <li>3.1 เครื่องมือ AI สำหรับการถอดเสียงประชุมและการสร้างรายงาน</li>
+                        <li>3.2 การสร้าง Google Forms และสคริปต์สำหรับการเก็บข้อมูล</li>
+                        <li>3.3 Canva AI สำหรับการประชาสัมพันธ์และการออกแบบ</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h3 class="chapter-title">บรรณานุกรม</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">ตัวอย่าง Prompt สำหรับงานภาครัฐ</h2>
+            
+            <style>
+                .prompt-example {
+                    background-color: white;
+                    border-radius: 8px;
+                    margin-bottom: 30px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                    overflow: hidden;
+                }
+                
+                .prompt-header {
+                    background-color: var(--primary-dark);
+                    color: white;
+                    padding: 15px 20px;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .prompt-header::before {
+                    content: "📌";
+                    margin-right: 10px;
+                    font-size: 1.4rem;
+                }
+                
+                .prompt-content {
+                    padding: 20px;
+                }
+                
+                .prompt-box {
+                    background-color: #f8f9fa;
+                    border-left: 4px solid var(--accent-color);
+                    padding: 15px;
+                    margin-bottom: 20px;
+                    border-radius: 0 4px 4px 0;
+                }
+                
+                .prompt-box-title {
+                    font-weight: 600;
+                    color: var(--primary-dark);
+                    margin-bottom: 10px;
+                }
+                
+                .output-box {
+                    background-color: #f0f7f5;
+                    border-left: 4px solid var(--primary-color);
+                    padding: 15px;
+                    border-radius: 0 4px 4px 0;
+                }
+                
+                .output-box-title {
+                    font-weight: 600;
+                    color: var(--primary-dark);
+                    margin-bottom: 10px;
+                }
+            </style>
+            
+            <div class="prompt-example">
+                <div class="prompt-header">Prompt ตัวอย่างที่ 1: ร่างหนังสือราชการ</div>
+                <div class="prompt-content">
+                    <div class="prompt-box">
+                        <div class="prompt-box-title">📝 Prompt:</div>
+                        <p>ช่วยร่างหนังสือราชการประเภทหนังสือภายนอก เรื่อง การขอความอนุเคราะห์ใช้สถานที่จัดการอบรม โดยมีสาระสำคัญดังนี้: • ผู้ส่ง: สำนักงานพัฒนาทรัพยากรบุคคล กรมการพัฒนาชุมชน • ผู้รับ: อธิการบดีมหาวิทยาลัยราชภัฏสวนสุนันทา • วัตถุประสงค์: ขอใช้ห้องประชุมจำนวน 2 ห้อง เพื่อจัดการฝึกอบรมหลักสูตร "นักพัฒนาชุมชนมืออาชีพ" • ระยะเวลา: วันที่ 15–17 มิถุนายน 2568 • จำนวนผู้เข้าร่วม: 120 คน • งบประมาณสนับสนุน: 30,000 บาท</p>
+                    </div>
+                    
+                    <div class="output-box">
+                        <div class="output-box-title">✅ ผลลัพธ์ (โดย Generative AI):</div>
+                        <p><strong>เรื่อง</strong> ขอความอนุเคราะห์ใช้สถานที่จัดอบรม <strong>เรียน</strong> อธิการบดีมหาวิทยาลัยราชภัฏสวนสุนันทา</p>
+                        <p>สิ่งที่ส่งมาด้วย: กำหนดการฝึกอบรม และรายละเอียดหลักสูตร จำนวน 1 ชุด</p>
+                        <p>ด้วยสำนักงานพัฒนาทรัพยากรบุคคล กรมการพัฒนาชุมชน กำหนดจัดฝึกอบรมหลักสูตร "นักพัฒนาชุมชนมืออาชีพ" ให้แก่เจ้าหน้าที่จากหน่วยงานในสังกัดทั่วประเทศ เพื่อพัฒนาศักยภาพในการทำงานด้านชุมชน โดยมีกำหนดจัดอบรมระหว่างวันที่ 15–17 มิถุนายน 2568</p>
+                        <p>ในการนี้ สำนักงานฯ มีความประสงค์ขอใช้ห้องประชุมของมหาวิทยาลัยราชภัฏสวนสุนันทา จำนวน 2 ห้อง รองรับผู้เข้าร่วมจำนวน 120 คน พร้อมกันนี้ สำนักงานฯ ยินดีสนับสนุนงบประมาณค่าสถานที่จำนวน 30,000 บาท</p>
+                        <p>จึงเรียนมาเพื่อโปรดพิจารณาอนุเคราะห์ และขอขอบคุณมา ณ โอกาสนี้</p>
+                        <p>ขอแสดงความนับถือ *(ลงชื่อ)* นายสรายุทธ กวิรัตน์ ผู้อำนวยการสำนักงานพัฒนาทรัพยากรบุคคล</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-example">
+                <div class="prompt-header">Prompt ตัวอย่างที่ 2: สรุปรายงานการประชุม</div>
+                <div class="prompt-content">
+                    <div class="prompt-box">
+                        <div class="prompt-box-title">📝 Prompt:</div>
+                        <p>ช่วยสรุปรายงานการประชุมจากข้อความถอดเสียงต่อไปนี้: "ในการประชุมเมื่อวาน ได้มีการหารือเรื่องการเบิกจ่ายงบประมาณของแผนกไอที ซึ่งยังล่าช้าในหลายรายการ ผู้อำนวยการเสนอให้ฝ่ายการเงินจัดทำรายงานสรุปปัญหาโดยด่วน และให้ทุกหน่วยงานตรวจสอบภายใน 3 วัน..." กรุณาสรุปโดยแบ่งเป็นหัวข้อ:</p>
+                        <ol>
+                            <li>วาระการประชุม</li>
+                            <li>ประเด็นหลักที่มีการหารือ</li>
+                            <li>มติที่ประชุม</li>
+                            <li>การติดตามงานจากครั้งก่อน</li>
+                            <li>งานที่ต้องดำเนินการต่อ</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="output-box">
+                        <div class="output-box-title">✅ ผลลัพธ์ (โดย Generative AI):</div>
+                        <p><strong>1. วาระการประชุม:</strong> การติดตามผลการเบิกจ่ายงบประมาณของแผนกไอที ประจำไตรมาสที่ 2</p>
+                        <p><strong>2. ประเด็นหลักที่มีการหารือ:</strong></p>
+                        <ul>
+                            <li>การล่าช้าในการเบิกจ่ายงบประมาณ</li>
+                            <li>การจัดซื้อจัดจ้างที่ยังไม่ดำเนินการตามแผน</li>
+                            <li>การจัดทำรายงานที่ขาดความชัดเจน</li>
+                        </ul>
+                        <p><strong>3. มติที่ประชุม:</strong></p>
+                        <ul>
+                            <li>มอบหมายฝ่ายการเงินจัดทำรายงานสรุปสาเหตุความล่าช้า</li>
+                            <li>กำหนดให้ทุกหน่วยงานที่เกี่ยวข้องตรวจสอบข้อมูลและรายงานกลับภายใน 3 วัน</li>
+                        </ul>
+                        <p><strong>4. การติดตามงานจากครั้งก่อน:</strong></p>
+                        <ul>
+                            <li>มีความคืบหน้าเรื่องจัดซื้ออุปกรณ์คอมพิวเตอร์จากแผนงานเดือนก่อน รอส่งมอบ</li>
+                        </ul>
+                        <p><strong>5. งานที่ต้องดำเนินการต่อ:</strong></p>
+                        <ul>
+                            <li>รวบรวมข้อมูลปัญหาจากแต่ละหน่วยงาน</li>
+                            <li>จัดประชุมเร่งรัดการเบิกจ่ายงบประมาณภายใน 1 สัปดาห์</li>
+                            <li>จัดทำรายงานสรุปเสนอผู้บริหารในรอบถัดไป</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prompt-example">
+                <div class="prompt-header">Prompt ตัวอย่างที่ 3: แปลงข้อความจากภาพเป็นเอกสาร</div>
+                <div class="prompt-content">
+                    <div class="prompt-box">
+                        <div class="prompt-box-title">📝 Prompt:</div>
+                        <p>ช่วยแปลงข้อความในภาพเอกสารนี้เป็นข้อความที่สามารถแก้ไขได้ โดย:</p>
+                        <ul>
+                            <li>รักษารูปแบบให้ใกล้เคียงต้นฉบับ</li>
+                            <li>คงหัวข้อ หัวข้อย่อย และตาราง</li>
+                            <li>อ่านไม่ได้ให้ใส่ [?]</li>
+                            <li>มีลายเซ็นให้ใส่ [ลายเซ็น]</li>
+                        </ul>
+                        <p>*(แนบภาพใบรายงานผลการประชุม)*</p>
+                    </div>
+                    
+                    <div class="output-box">
+                        <div class="output-box-title">✅ ผลลัพธ์ (โดย Generative AI):</div>
+                        <p><strong>รายงานการประชุมคณะกรรมการบริหารงานทั่วไป</strong> วันที่ 20 มีนาคม 2568 สถานที่: ห้องประชุม 1 ชั้น 3 อาคารอำนวยการ</p>
+                        <p><strong>วาระที่ 1 เรื่องแจ้งเพื่อทราบ</strong></p>
+                        <ul>
+                            <li>ข้อมูลงบประมาณประจำไตรมาส 2</li>
+                        </ul>
+                        <p><strong>วาระที่ 2 เรื่องเพื่อพิจารณา</strong></p>
+                        <ul>
+                            <li>ขออนุมัติการจัดซื้อเครื่องปรับอากาศสำหรับห้องฝ่ายบริการวิชาการ</li>
+                        </ul>
+                        <p><strong>มติ:</strong> อนุมัติการจัดซื้อ โดยใช้วงเงินไม่เกิน 45,000 บาท จากงบกลาง</p>
+                        <p><strong>ผู้เข้าร่วมประชุม:</strong></p>
+                        <ul>
+                            <li>นายสมเกียรติ ขจรชัย [ลายเซ็น]</li>
+                            <li>นางสาวพิมพ์ใจ ใจมั่น [ลายเซ็น]</li>
+                            <li>นายธนพนธ์ ศรีไตร [ลายเซ็น]</li>
+                        </ul>
+                        <p><strong>บันทึกโดย:</strong> นายวชิรวิทย์ วงศ์ตะวัน [ลายมือ – ตัวอักษรไม่ชัดเจนบางส่วน: "....ผลการสรุปพิจารณาเรื่องอื่น ๆ ..."]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">ตัวอย่างการประยุกต์ใช้ AI ในงานภาครัฐ</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 30px 0;">
+                <div class="feature-card">
+                    <div class="feature-title">ระบบตอบคำถามอัตโนมัติ (Chatbot)</div>
+                    <p>ให้บริการประชาชน 24 ชั่วโมง ช่วยตอบคำถามทั่วไป ให้ข้อมูลขั้นตอนการบริการ และรับเรื่องร้องเรียนเบื้องต้น ลดภาระเจ้าหน้าที่และรองรับปริมาณคำถามจำนวนมากได้พร้อมกัน</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-title">ระบบวิเคราะห์และประมวลผลเอกสาร</div>
+                    <p>ตรวจสอบความถูกต้องของเอกสาร สกัดข้อมูลสำคัญ จัดหมวดหมู่ และค้นหาข้อมูลในเอกสารจำนวนมาก ช่วยลดระยะเวลาและข้อผิดพลาดในการประมวลผลข้อมูล</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-title">ระบบวิเคราะห์ความคิดเห็นประชาชน</div>
+                    <p>วิเคราะห์ความคิดเห็นจากสื่อสังคมออนไลน์ แบบสอบถาม และช่องทางรับเรื่องร้องเรียน เพื่อเข้าใจความต้องการและปัญหาของประชาชน นำไปสู่การปรับปรุงบริการที่ตรงจุด</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-title">ระบบตรวจจับการทุจริตและความผิดปกติ</div>
+                    <p>ตรวจสอบธุรกรรมทางการเงิน การจัดซื้อจัดจ้าง และกระบวนการอื่นๆ เพื่อระบุรูปแบบที่ผิดปกติหรือมีความเสี่ยงต่อการทุจริต ช่วยเพิ่มความโปร่งใสและความน่าเชื่อถือ</p>
+                </div>
+            </div>
+
+            <div class="callout" style="text-align: center; background-color: rgba(255, 152, 0, 0.1); border-left-color: var(--accent-color);">
+                <div class="callout-title" style="font-size: 1.5rem; margin-bottom: 15px;">การเตรียมพร้อมสู่รัฐบาลดิจิทัลด้วย AI</div>
+                <p style="font-size: 1.1rem;">AI ไม่ใช่เพียงเทคโนโลยี แต่เป็นเครื่องมือสำคัญในการปฏิรูปการทำงานภาครัฐ<br>เพื่อยกระดับคุณภาพชีวิตของประชาชนและความก้าวหน้าของประเทศ</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">เอกสารประกอบการอบรม การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ</h3>
+                <p>สำนักงานส่งเสริมและสนับสนุนวิชาการ 6</p>
+                <p>ผู้จัดทำ: ดร. สรายุทธ กวิรัตน์</p>
+                <p>คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม มหาวิทยาลัยกาฬสินธุ์</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

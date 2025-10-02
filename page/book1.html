@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <title>เอกสารประกอบการสอน วิชา EN-001-002 การโปรแกรมคอมพิวเตอร์</title>
+    <style>
+        :root {
+            --primary-color: #5e3996;
+            /* Purple from image */
+            --primary-dark: #44287a;
+            /* Darker purple */
+            --primary-gradient: linear-gradient(135deg, #5e3996, #383e8f);
+            /* Purple to blue gradient */
+            --secondary-color: #ffcfcf;
+            /* Light pink from image */
+            --accent-color: #ff4e2a;
+            /* Orange-red from image */
+            --accent-blue: #3347ff;
+            /* Blue from image */
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --light-gray: #ecf0f1;
+            --dark-gray: #7f8c8d;
+            --success-color: #2ecc71;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', 'Sarabun', 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="50" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.05)">def python() { return success; }</text></svg>');
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .book-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+        }
+
+        .book-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .book-info {
+            display: flex;
+            gap: 60px;
+            margin: 40px 0;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .book-cover {
+            flex: 0 0 450px;
+            position: relative;
+        }
+
+        .book-cover::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            transform: translateX(-29px) rotateY(35deg);
+            transform-origin: right;
+            z-index: -1;
+        }
+
+        .book-cover::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 500px;
+            background: var(--primary-gradient);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 800 800"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern><radialGradient id="sphere" cx="50%" cy="30%" r="50%" fx="50%" fy="30%"><stop offset="0%" stop-color="rgba(255,255,255,0.15)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23grid)"/><circle cx="400" cy="250" r="200" fill="url(%23sphere)"/><path d="M150,650 C250,500 550,500 650,650" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="none"/><path d="M200,680 C280,560 520,560 600,680" stroke="rgba(255,255,255,0.07)" stroke-width="6" fill="none"/><path d="M250,700 C310,610 490,610 550,700" stroke="rgba(255,255,255,0.05)" stroke-width="4" fill="none"/><text x="350" y="400" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.1)">print("Hello, World!")</text><text x="300" y="430" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.1)">def python(): return success</text><text x="250" y="460" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.1)">for i in range(10): print(i)</text></svg>');
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+            border: 8px solid var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .python-logo {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 2;
+        }
+
+        .course-code {
+            position: absolute;
+            top: 70px;
+            right: 30px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+            z-index: 2;
+        }
+
+        .course-title {
+            position: absolute;
+            top: 130px;
+            right: 30px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: white;
+            text-align: right;
+            line-height: 1.2;
+            z-index: 2;
+        }
+
+        .arrows-decoration {
+            position: absolute;
+            bottom: 200px;
+            right: 20px;
+            z-index: 2;
+        }
+
+        .math-symbols {
+            position: absolute;
+            bottom: 50px;
+            right: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .math-symbol {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .author-info {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: white;
+            text-align: left;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .cover-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1px;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 8px 16px;
+            border-radius: 4px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.15);
+            padding: 6px 12px;
+            border-radius: 4px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-author {
+            margin-top: 10px;
+            font-style: italic;
+            background-color: rgba(0, 0, 0, 0.15);
+            padding: 5px 10px;
+            border-radius: 4px;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+        }
+
+        .cover-quote {
+            margin-top: 60px;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 1.05rem;
+            max-width: 80%;
+            line-height: 1.7;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-quote strong {
+            color: var(--secondary-color);
+            display: block;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .cover-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 0.9rem;
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 8px 12px;
+            border-radius: 4px;
+            line-height: 1.4;
+            z-index: 2;
+        }
+
+        .book-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .cover-image:hover {
+            transform: scale(1.02);
+        }
+
+        .book-details {
+            flex: 1;
+            padding: 30px;
+            min-width: 500px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .cover-content {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px dashed var(--light-gray);
+        }
+
+        .book-code {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .book-name {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        .book-author {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .book-quote {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-style: italic;
+            position: relative;
+            text-align: center;
+        }
+
+        .book-quote::before {
+            content: " ";
+            font-size: 3rem;
+            position: absolute;
+            left: 5px;
+            top: -10px;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .book-quote strong {
+            display: block;
+            margin-top: 8px;
+            color: var(--primary-dark);
+        }
+
+        .university-info {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            margin-top: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 78, 42, 0.3);
+        }
+
+        .download-btn:hover {
+            background-color: #e63a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 78, 42, 0.4);
+        }
+
+        .course-description {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0 30px;
+            text-align: left;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-description p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .course-description strong {
+            color: var(--primary-dark);
+        }
+
+        .application-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .application-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .application-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .application-list li strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .details-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .details-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .details-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .details-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .objectives {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .objectives-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .objectives-list {
+            padding-left: 20px;
+        }
+
+        .objectives-list li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .objectives-list li::before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: -20px;
+        }
+
+        .section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .toc {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter {
+            margin-bottom: 25px;
+        }
+
+        .chapter-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .chapter-title::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            margin-right: 15px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%235e3996" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .chapter-list {
+            list-style: none;
+            margin-left: 45px;
+        }
+
+        .chapter-list li {
+            margin-bottom: 8px;
+            color: var(--dark-gray);
+            transition: color 0.2s ease;
+        }
+
+        .chapter-list li:hover {
+            color: var(--primary-color);
+        }
+
+        .code-example {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-title {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .code-title::before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .code-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .code-container {
+            padding: 25px;
+            overflow-x: auto;
+            background-color: #282c34;
+            color: #abb2bf;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            border-radius: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .code-explanation {
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+
+        .explanation-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .explanation-list {
+            padding-left: 20px;
+        }
+
+        .explanation-list li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .code-output {
+            background-color: #f1f8ff;
+            padding: 15px 20px;
+            border-top: 1px solid #e6f0fa;
+            font-family: 'Consolas', monospace;
+            white-space: pre-wrap;
+            color: #334455;
+            font-size: 0.95rem;
+        }
+
+        .output-title {
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .highlight-import {
+            color: #c678dd;
+            font-weight: bold;
+        }
+
+        .highlight-def {
+            color: #61afef;
+            font-weight: bold;
+        }
+
+        .highlight-string {
+            color: #98c379;
+        }
+
+        .highlight-comment {
+            color: #7f848e;
+            font-style: italic;
+        }
+
+        .highlight-number {
+            color: #e5c07b;
+        }
+
+        .highlight-math {
+            color: #56b6c2;
+        }
+
+        .highlight-bracket {
+            color: #e06c75;
+        }
+
+        .highlight-function {
+            color: #61afef;
+        }
+
+        /* Add this to make the cover image fit properly */
+        .cover-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* This maintains aspect ratio while filling the container */
+            object-position: center;
+            border-radius: 2px;
+            display: block;
+        }
+
+        /* Adjust the cover-image container */
+        .cover-image {
+            padding: 0;
+            /* Remove padding to avoid space around image */
+            display: block;
+            /* Change from flex to block */
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .book-info {
+                flex-direction: column;
+            }
+
+            .book-cover,
+            .book-details {
+                width: 100%;
+            }
+
+            .book-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* Optional: adjust width ratio between cover and details */
+        @media (min-width: 769px) {
+            .book-cover {
+                flex: 0.8;
+                /* Make cover slightly narrower than details */
+            }
+
+            .book-details {
+                min-width: auto;
+                padding: 20px;
+            }
+        }
+
+        /* Ensure the image doesn't get too tall on larger screens */
+        @media (min-width: 1200px) {
+            .cover-image {
+                height: 550px;
+                /* Slightly taller on big screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="book-title">เอกสารประกอบการสอน วิชา EN-001-002</h1>
+            <h2 class="book-subtitle">การโปรแกรมคอมพิวเตอร์ - Computer Programming</h2>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="book-info">
+            <div class="book-cover">
+
+                <img class="cover-image" src="/cover/cover1.png" alt="Cover book">
+
+            </div>
+
+            <div class="book-details">
+                <div class="cover-content">
+                    <div class="book-code">EN-001-002</div>
+                    <h3 class="book-name">การโปรแกรมคอมพิวเตอร์<br>Computer Programming</h3>
+                    <p class="book-author">โดย: สรายุทธ กวิรัตน์</p>
+
+                    <div class="book-quote">
+                        "Success is the sum of small efforts, repeated day in and day out."
+                        <strong>ความสำเร็จ คือผลรวมของความพยายามเล็กๆ ที่ทำซ้ำๆ กันทุกวัน</strong>
+                    </div>
+
+                    <p class="university-info">คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม<br>มหาวิทยาลัยกาฬสินธุ์</p>
+
+                    <div style="text-align: center;">
+
+                        <a href="python-computer-programming-2567.pdf" class="download-btn" download
+                            onclick="logDownload()">ดาวน์โหลดเอกสาร</a>
+
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+        <div class="section">
+        
+            <div class="course-description">
+                <p>รายวิชา <strong>การโปรแกรมคอมพิวเตอร์</strong> นี้
+                    คือจุดเริ่มต้นที่สมบูรณ์แบบสำหรับทุกคนที่สนใจในโลกแห่งการเขียนโปรแกรม โดยใช้ภาษา PYTHON
+                    ซึ่งเป็นภาษาที่เรียนง่ายแต่ทรงพลัง ผู้เรียนจะได้สัมผัสกับเนื้อหาที่เข้าใจง่าย
+                    ครอบคลุมตั้งแต่พื้นฐานจนถึงเทคนิคขั้นสูง พร้อมตัวอย่างโค้ดที่หลากหลาย
+                    รวมถึงเนื้อหาใหม่หรือผู้ที่มีประสบการณ์ก็สามารถเรียนรู้และนำไปประยุกต์ใช้ได้จริง</p>
+
+                <p>นอกจากเนื้อหาพื้นฐานแล้ว รายวิชายังปูพื้นฐานการประยุกต์ใช้ PYTHON ในด้านต่างๆ เช่น</p>
+
+                <ul class="application-list">
+                    <li><strong>วิศวกรรม:</strong> เรียนรู้การจำลองแบบระบบ และการควบคุมอัตโนมัติเบื้องต้น</li>
+                    <li><strong>การวิเคราะห์ข้อมูล:</strong> ฝึกฝนการสร้างกราฟ และการวิเคราะห์แนวโน้มข้อมูล</li>
+                    <li><strong>IoT:</strong> เข้าใจหลักการควบคุมอุปกรณ์ และการรับส่งข้อมูลในระบบ IoT</li>
+                    <li><strong>AI:</strong> การประมวลผลข้อมูลและแสดงผล</li>
+                </ul>
+
+                <p>ซึ่งจะเป็นประโยชน์อย่างยิ่งสำหรับผู้เริ่มต้นที่ต้องการต่อยอด และนำ PYTHON
+                    ไปประยุกต์ใช้ในสาขาต่างๆ ต่อไปในอนาคต ด้วยการเรียนที่เป็นขั้นตอน เข้าใจง่าย และตัวอย่างโค้ด
+                    ผู้เรียนจะเข้าใจเนื้อหาได้อย่างรวดเร็ว พร้อมพัฒนาเพื่อการเขียนโปรแกรม PYTHON
+                    และก้าวสู่โลกเทคโนโลยีอย่างมั่นใจ</p>
+            </div>
+
+        </div>
+
+
+        <div class="section">
+            <h2 class="section-title">สารบัญ</h2>
+            <div class="toc">
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 1 ความรู้พื้นฐานระบบคอมพิวเตอร์และการเขียนโปรแกรม</h3>
+                    <ul class="chapter-list">
+                        <li>ความสำคัญของการเขียนโปรแกรม</li>
+                        <li>องค์ประกอบของระบบคอมพิวเตอร์</li>
+                        <li>ระบบปฏิบัติการและโปรแกรม</li>
+                        <li>วิวัฒนาการและความสำคัญของ Python</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 2 การเขียนโปรแกรมเบื้องต้นด้วยภาษา Python</h3>
+                    <ul class="chapter-list">
+                        <li>การใช้งาน IDE</li>
+                        <li>ตัวแปรและชนิดข้อมูล</li>
+                        <li>การคำนวณ</li>
+                        <li>ลิสต์ และ ดิกชันนารี</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 3 การควบคุมโปรแกรม</h3>
+                    <ul class="chapter-list">
+                        <li>ผังงาน (Flowchart)</li>
+                        <li>เงื่อนไข (if, else)</li>
+                        <li>การวนซ้ำ (Loops)</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 4 ฟังก์ชัน</h3>
+                    <ul class="chapter-list">
+                        <li>การสร้างฟังก์ชัน</li>
+                        <li>พารามิเตอร์</li>
+                        <li>โมดูล</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 5 การเขียนโปรแกรมเชิงโครงสร้าง</h3>
+                    <ul class="chapter-list">
+                        <li>การออกแบบโปรแกรม Top-Down</li>
+                        <li>ตัวอย่างและการประยุกต์</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 6 การจัดการข้อมูลและไฟล์</h3>
+                    <ul class="chapter-list">
+                        <li>โครงสร้างข้อมูล</li>
+                        <li>การอ่าน/เขียนไฟล์</li>
+                        <li>การใช้งานไลบรารี (NumPy, Pandas, Matplotlib)</li>
+                    </ul>
+                </div>
+
+                <div class="chapter">
+                    <h3 class="chapter-title">บทที่ 7 การประยุกต์โปรแกรมด้านวิศวกรรม</h3>
+                    <ul class="chapter-list">
+                        <li>การคำนวณทางวิศวกรรม</li>
+                        <li>เส้นทางสั้นที่สุด (TSP)</li>
+                        <li>Internet of Things (IoT)</li>
+                        <li>การเรียนรู้ของเครื่อง (ML)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">ตัวอย่างโค้ดที่น่าสนใจ</h2>
+
+            <div class="code-example">
+                <div class="code-header">
+                    <div class="code-title">การหาเส้นทางสั้นที่สุด (Travelling Salesman Problem - TSP)</div>
+                    <div class="code-badge">Python</div>
+                </div>
+                <div class="code-container">
+
+
+
+                    <pre><code class="language-python">
+# โปรแกรมหาเส้นทางสั้นที่สุด (Travelling Salesman Problem)
+import numpy as np
+import itertools
+
+def calculate_distance(point1, point2):
+    return np.linalg.norm(np.array(point1) - np.array(point2))
+
+def total_path_distance(path, coordinates):
+    distance = 0
+    for i in range(len(path) - 1):
+        distance += calculate_distance(coordinates[path[i]], coordinates[path[i+1]])
+    distance += calculate_distance(coordinates[path[-1]], coordinates[path[0]])
+    return distance
+
+coordinates = [
+    (0, 0),  # เมือง A
+    (1, 5),  # เมือง B
+    (5, 2),  # เมือง C
+    (6, 6)   # เมือง D
+]
+
+paths = itertools.permutations(range(len(coordinates)))
+shortest_path = min(paths, key=lambda p: total_path_distance(p, coordinates))
+shortest_distance = total_path_distance(shortest_path, coordinates)
+
+print(f"เส้นทางที่สั้นที่สุด: {shortest_path}")
+print(f"ระยะทางทั้งหมด: {shortest_distance:.2f}")
+    </code></pre>
+                </div>
+                <div class="code-explanation">
+                    <h4 class="explanation-title">คำอธิบายโค้ด:</h4>
+                    <ul class="explanation-list">
+                        <li><strong>หลักการทำงาน:</strong> โค้ดนี้แก้ปัญหา Travelling Salesman Problem (TSP)
+                            โดยคำนวณระยะทางที่สั้นที่สุดในการเดินทางผ่านทุกเมืองและกลับมาจุดเริ่มต้น</li>
+                        <li><strong>อัลกอริทึม:</strong> ใช้การคำนวณระยะทางแบบยูคลิด (Euclidean distance)
+                            และทดลองเส้นทางทุกรูปแบบที่เป็นไปได้ (brute force approach)</li>
+                        <li><strong>การใช้ไลบรารี:</strong> นำ NumPy มาใช้ในการคำนวณระยะทางระหว่างจุด และใช้ itertools
+                            สำหรับการสร้างเส้นทางที่เป็นไปได้ทั้งหมด</li>
+                        <li><strong>การประยุกต์:</strong> แสดงให้เห็นถึงการใช้ Python
+                            แก้ปัญหาการหาเส้นทางที่ประหยัดที่สุด ซึ่งใช้ได้กับงานวิศวกรรมหลายด้าน เช่น การขนส่ง
+                            โลจิสติกส์ หรือการวางแผนเส้นทาง</li>
+                    </ul>
+                </div>
+                <div class="code-output">
+                    <div class="output-title">ผลลัพธ์การทำงาน:</div>
+                    เส้นทางที่สั้นที่สุด: (0, 2, 3, 1)
+                    ระยะทางทั้งหมด: 18.48
+                </div>
+            </div>
+
+            <div class="code-example" style="margin-top: 40px;">
+                <div class="code-header">
+                    <div class="code-title">การแสดงกราฟฟังก์ชันด้วย Matplotlib</div>
+                    <div class="code-badge">Python</div>
+                </div>
+                <div class="code-container">
+                    <span class="highlight-import">import</span> matplotlib.pyplot <span
+                        class="highlight-import">as</span> plt
+                    <br>
+                    <span class="highlight-import">import</span> numpy <span class="highlight-import">as</span> np
+                    <br>
+                    <span class="highlight-comment"># ตัวอย่างการแสดงกราฟฟังก์ชัน y = sin(x)</span>
+                    x = np.<span class="highlight-function">linspace</span>(<span class="highlight-number">0</span>,
+                    <span class="highlight-number">2</span> * np.pi, <span class="highlight-number">100</span>)
+                    <br>
+                    y = np.<span class="highlight-function">sin</span>(x)
+                    <br>
+                    plt.<span class="highlight-function">figure</span>(figsize=(<span class="highlight-number">8</span>,
+                    <span class="highlight-number">4</span>))
+                    <br>
+                    plt.<span class="highlight-function">plot</span>(x, y, label=<span class="highlight-string">'y =
+                        sin(x)'</span>, color=<span class="highlight-string">'blue'</span>)
+                    <br>
+                    plt.<span class="highlight-function">title</span>(<span class="highlight-string">'Example Graph of
+                        Sin(x)'</span>)
+                    <br>
+                    plt.<span class="highlight-function">xlabel</span>(<span class="highlight-string">'X Axis'</span>)
+                    <br>
+                    plt.<span class="highlight-function">ylabel</span>(<span class="highlight-string">'Y Axis'</span>)
+                    <br>
+                    plt.<span class="highlight-function">grid</span>(True)
+                    <br>
+                    plt.<span class="highlight-function">legend</span>()
+                    <br>
+                    plt.<span class="highlight-function">show</span>()
+                </div>
+                <div class="code-explanation">
+                    <h4 class="explanation-title">คำอธิบายโค้ด:</h4>
+                    <ul class="explanation-list">
+                        <li><strong>หลักการทำงาน:</strong> โค้ดนี้สร้างกราฟของฟังก์ชัน sine โดยใช้ไลบรารี Matplotlib และ
+                            NumPy ของ Python</li>
+                        <li><strong>การสร้างข้อมูล:</strong> ใช้ NumPy สร้างข้อมูลจุดต่างๆ ของ x ตั้งแต่ 0 ถึง 2π
+                            และคำนวณค่า sin(x) สำหรับแต่ละจุด</li>
+                        <li><strong>การใช้ Matplotlib:</strong> กำหนดขนาดกราฟ, สร้างเส้นกราฟ, เพิ่มชื่อแกน, ชื่อกราฟ,
+                            และเส้นตาราง</li>
+                        <li><strong>การประยุกต์:</strong> การสร้างภาพกราฟเป็นทักษะสำคัญในงานวิศวกรรมและวิทยาศาสตร์ข้อมูล
+                            ช่วยในการวิเคราะห์และนำเสนอข้อมูลได้อย่างมีประสิทธิภาพ</li>
+                    </ul>
+                </div>
+                <div class="code-output" style="text-align: center; padding: 20px; background-color: white;">
+                    <div class="output-title">ผลลัพธ์การทำงาน:</div>
+                    <img src="sin_graph.png" width='600' height='300' viewBox='0 0 600 300'>
+                    <rect width='600' height='300' fill='white' />
+                    <path
+                        d='M50 150 C50 150, 70 50, 100 50 C130 50, 150 250, 180 250 C210 250, 230 50, 260 50 C290 50, 310 250, 340 250 C370 250, 390 50, 420 50 C450 50, 470 250, 500 250 C530 250, 550 150, 550 150'
+                        stroke='#3347ff' fill='none' stroke-width='2' />
+                    <line x1='50' y1='0' x2='50' y2='300' stroke='#ccc' stroke-width='1' />
+                    <line x1='0' y1='150' x2='600' y2='150' stroke='#ccc' stroke-width='1' /><text x='40' y='20'
+                        font-family='Arial' font-size='16' fill='black'>ตัวอย่างกราฟฟังก์ชัน Sin(x)</text><text x='550'
+                        y='170' font-family='Arial' font-size='12' fill='black'>แกน X</text><text x='30' y='30'
+                        font-family='Arial' font-size='12' fill='black'>แกน Y</text>
+                    <rect x='450' y='20' width='10' height='10' fill='#3347ff' /><text x='465' y='30'
+                        font-family='Arial' font-size='12' fill='black'>y = sin(x)</text></svg>" alt="กราฟฟังก์ชัน
+                    Sin(x)" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 2px 8px
+                    rgba(0,0,0,0.1);">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">เอกสารประกอบการสอน วิชา EN-001-002</h3>
+                <p>มหาวิทยาลัยกาฬสินธุ์ คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม</p>
+                <p>ผู้จัดทำ: สรายุทธ กวิรัตน์</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function logDownload() {
+            console.log("xxx")
+            fetch('https://script.google.com/macros/s/AKfycbxdOrf24R3VNodCTZNFTgVKarjdQDl0jJT9KseLbnD1phlVFkvu1Y8Hn6OWUN_cF2zeWg/exec', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userAgent: navigator.userAgent,
+                    pageUrl: window.location.href
+                })
+            });
+        }
+    </script>
+
+    <script>
+        function downloadHTML() {
+            // Create a blob with the HTML content
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'books/book1.pdf';
+
+            // Add link to the document, click it, and remove it
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+
+</html>

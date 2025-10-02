@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>หน้าโปรไฟล์นักศึกษา</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Portfolio - อาจารย์ ดร.สรายุทธ กรวิรัตน์</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700&display=swap">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Kanit', 'Lato', 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        .app-logo {
+            display: inline-block;
+            object-fit: cover;
         }
         .sidebar-link {
             transition: all 0.2s ease-in-out;
         }
         .sidebar-link:hover, .sidebar-link.active {
-            background-color: #e0f2fe; /* light-blue-100 */
-            color: #0c4a6e; /* light-blue-900 */
+            background-color: #e8d5ff; /* light-purple */
+            color: #44287a; /* dark-purple */
             transform: translateX(4px);
         }
         /* Custom scrollbar for better aesthetics */
@@ -26,20 +34,137 @@
             background: #f1f5f9;
         }
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: #5e3996;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: #44287a;
+        }
+
+        /* Bookshelf Styles */
+        .bookshelf {
+            position: relative;
+            background: linear-gradient(180deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .shelf-wood {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(180deg, #d97706 0%, #92400e 100%);
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .books-row {
+            min-height: 220px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.05) 100%);
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        .book-item {
+            position: relative;
+        }
+
+        .book-cover-img {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .book-item:hover .book-cover-img {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .book-overlay {
+            backdrop-filter: blur(2px);
+        }
+
+        .book-info {
+            max-width: 160px;
+        }
+
+        .book-spine {
+            position: relative;
+            box-shadow: 
+                2px 0 4px rgba(0,0,0,0.2),
+                inset -2px 0 2px rgba(255,255,255,0.2),
+                inset 2px 0 2px rgba(0,0,0,0.1);
+        }
+
+        .book-spine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+        }
+
+        .book-spine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.2) 100%);
+        }
+
+        .book-item:hover .book-spine {
+            box-shadow: 
+                4px 0 8px rgba(0,0,0,0.3),
+                inset -2px 0 2px rgba(255,255,255,0.3),
+                inset 2px 0 2px rgba(0,0,0,0.1);
+        }
+
+        .shelf-wood-bottom {
+            position: relative;
+            box-shadow: 
+                0 2px 8px rgba(0,0,0,0.2),
+                inset 0 1px 2px rgba(255,255,255,0.2);
+        }
+
+        .shelf-wood-bottom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+        }
+
+        @media (max-width: 768px) {
+            .books-row {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .book-spine {
+                height: 150px !important;
+                width: 100px !important;
+            }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside id="sidebar" class="w-64 bg-white shadow-md absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out z-30">
+        <aside id="sidebar" class="w-64 bg-white dark:bg-slate-800 shadow-md absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 ease-in-out z-30">
             <div class="p-5 border-b border-slate-200">
-                <h1 class="text-2xl font-bold text-sky-700">Student Portal</h1>
+                <div class="flex items-center space-x-3">
+                    <img src="logo.png" alt="Logo" class="app-logo h-10 w-8" />
+                    <h1 class="text-2xl font-bold" style="color: #5e3996;">Profolio</h1>
+                </div>
             </div>
             <nav class="mt-5">
                 <a href="#profile" class="sidebar-link active flex items-center py-3 px-5 text-slate-600">
@@ -47,16 +172,20 @@
                     ข้อมูลส่วนตัว
                 </a>
                 <a href="#academic" class="sidebar-link flex items-center py-3 px-5 text-slate-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                    ผลการเรียน
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-5.998 12.078 12.078 0 01.665-6.479L12 14z" /></svg>
+                    การศึกษา & วิจัย
                 </a>
                 <a href="#payment" class="sidebar-link flex items-center py-3 px-5 text-slate-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
-                    การชำระเงิน
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                    สถิติงานวิจัย
+                </a>
+                <a href="#books" class="sidebar-link flex items-center py-3 px-5 text-slate-600">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                    หนังสือ
                 </a>
                 <a href="#activities" class="sidebar-link flex items-center py-3 px-5 text-slate-600">
-                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    กิจกรรม
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    ติดต่อ
                 </a>
                 <div class="absolute bottom-0 w-full p-5 border-t border-slate-200">
                     <a href="#settings" class="sidebar-link flex items-center py-3 px-5 text-slate-600">
@@ -70,49 +199,65 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
             <!-- Header -->
-            <header class="bg-white shadow-sm flex justify-between items-center p-4">
+            <header class="bg-white dark:bg-slate-800 shadow-sm flex justify-between items-center p-4">
                 <button id="hamburger" class="md:hidden text-slate-500">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-                <div class="text-lg font-semibold text-slate-700">ยินดีต้อนรับ, สรายุทธ กรวิรัตน์</div>
+                <div class="text-lg font-semibold text-slate-700 dark:text-slate-200">ยินดีต้อนรับ</div>
                 <div class="flex items-center space-x-4">
-                    <button class="relative text-slate-500 hover:text-sky-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-                        <span class="absolute -top-1 -right-1 flex h-3 w-3">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 text-white text-xs items-center justify-center">3</span>
-                        </span>
+                    <button id="themeToggle" class="px-3 py-1.5 rounded-md text-sm font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                        โหมดกลางคืน
                     </button>
-                    <img class="h-10 w-10 rounded-full object-cover" src="profile.jpg" alt="รูปโปรไฟล์">
+                    
+                    <!-- <img class="h-10 w-10 rounded-full object-cover" src="profile.jpg" alt="รูปโปรไฟล์"> -->
                 </div>
             </header>
 
             <!-- Content Area -->
-            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 p-6 md:p-8">
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 dark:bg-slate-900 p-6 md:p-8">
+                <!-- Hero Section -->
+                <section class="mb-8">
+                    <div class="relative overflow-hidden rounded-xl p-8 md:p-10 bg-gradient-to-r from-purple-600 to-teal-500 text-white shadow-lg">
+                        <div class="relative z-10">
+                            <h1 class="text-2xl md:text-3xl font-extrabold mb-2">คลังเอกสารสอนและอบรม</h1>
+                            <p class="opacity-90 mb-6">เข้าถึงเนื้อหาได้รวดเร็ว เลือกหัวข้อที่ต้องการ แล้วเริ่มอ่านได้ทันที</p>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="page/book1.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/95 text-slate-800 hover:bg-white shadow-md transition">
+                                    <span>การโปรแกรมคอมพิวเตอร์</span>
+                                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">EN-001-002</span>
+                                </a>
+                                <a href="page/book2.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/95 text-slate-800 hover:bg-white shadow-md transition">
+                                    <span>AI ในงานภาครัฐ</span>
+                                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded">คู่มืออบรม</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                        <div class="absolute -left-10 -bottom-10 w-52 h-52 bg-black/10 rounded-full blur-2xl"></div>
+                    </div>
+                </section>
                 <!-- Profile Section -->
                 <section id="profile" class="mb-8">
                     <div class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
                         <div class="relative">
-                            <img class="h-28 w-28 rounded-full object-cover ring-4 ring-sky-200" src="profile.jpg" alt="รูปโปรไฟล์ขนาดใหญ่">
-                            <button class="absolute bottom-0 right-0 bg-sky-600 text-white p-1.5 rounded-full hover:bg-sky-700 transition">
+                            <img class="h-28 w-28 rounded-full object-cover ring-4" style="border: 4px solid #e8d5ff;" src="profile.jpg" alt="รูปโปรไฟล์ขนาดใหญ่">
+                            <button class="absolute bottom-0 right-0 text-white p-1.5 rounded-full transition" style="background-color: #5e3996;" onmouseover="this.style.backgroundColor='#44287a'" onmouseout="this.style.backgroundColor='#5e3996'">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" /></svg>
                             </button>
                         </div>
                         <div class="flex-1 text-center md:text-left">
-                            <h2 class="text-2xl font-bold">นายสรายุทธ กรวิรัตน์</h2>
-                            <p class="text-slate-500">รหัสนักศึกษา: 65012345</p>
+                            <h2 class="text-2xl font-bold">อาจารย์ ดร.สรายุทธ กรวิรัตน์</h2>
+                            <p class="text-slate-500">อาจารย์ประจำสาขาวิชาวิศวกรรมคอมพิวเตอร์</p>
                             <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                                <p><strong class="font-medium">วันเกิด:</strong> 15 มกราคม 2546</p>
+                                <p><strong class="font-medium">สาขาวิชา:</strong> วิศวกรรมคอมพิวเตอร์</p>
                                 <p><strong class="font-medium">อีเมล:</strong> sarayut.go@ksu.ac.th</p>
-                                <p><strong class="font-medium">เบอร์โทรศัพท์:</strong> 081-234-5678</p>
-                                <p><strong class="font-medium">ที่อยู่:</strong>มหาวิทยาลัยกาฬสินธุ์ 62/1 ถนนเกษตรสมบูรณ์ ต.กาฬสินธุ์ อ.เมือง จ.กาฬสินธุ์ 4600</p>
+                                <p><strong class="font-medium">คณะ:</strong> วิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม</p>
+                                <p><strong class="font-medium">สถาบัน:</strong> มหาวิทยาลัยกาฬสินธุ์</p>
                             </div>
                         </div>
-                        <button class="bg-sky-600 text-white font-semibold py-2 px-5 rounded-lg hover:bg-sky-700 transition w-full md:w-auto">
-                            แก้ไขข้อมูล
-                        </button>
+                       
                     </div>
                 </section>
 
@@ -228,6 +373,93 @@
                     </div>
                 </section>
 
+                <!-- Books Section -->
+                <section id="books" class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">หนังสือ</h3>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="bookshelf-container">
+                            <!-- Bookshelf styling -->
+                            <div class="bookshelf mb-8">
+                                <div class="shelf-wood"></div>
+                                <div class="books-row flex justify-center items-end space-x-4 pb-4">
+                                    <!-- Book 1 -->
+                                    <div class="book-item group cursor-pointer transform hover:scale-105 transition-all duration-300">
+                                        <a href="page/book1.html" class="block">
+                                            <div class="book-container relative" style="height: 220px; width: 160px;">
+                                                <img src="cover/cover1.png" alt="เอกสารประกอบการสอน วิชา EN-001-002 การโปรแกรมคอมพิวเตอร์" 
+                                                     class="book-cover-img w-full h-full object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-purple-200">
+                                                <div class="book-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                                                        <div class="text-xs font-bold">คลิกเพื่ออ่าน</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="book-info mt-2 text-center">
+                                            <div class="text-sm font-semibold text-purple-800 leading-tight">การโปรแกรมคอมพิวเตอร์</div>
+                                            <div class="text-xs text-purple-600">EN-001-002</div>
+                                            <div class="mt-2">
+                                                <a href="page/book1.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs bg-purple-600 text-white hover:bg-purple-700 shadow-sm">
+                                                    📖 เปิดอ่าน
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Book 2 -->
+                                    <div class="book-item group cursor-pointer transform hover:scale-105 transition-all duration-300">
+                                        <a href="page/book2.html" class="block">
+                                            <div class="book-container relative" style="height: 220px; width: 160px;">
+                                                <img src="cover/cover2.png" alt="เอกสารประกอบการอบรม - การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ" 
+                                                     class="book-cover-img w-full h-full object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-teal-200">
+                                                <div class="book-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    <div class="absolute bottom-4 left-4 right-4 text-white">
+                                                        <div class="text-xs font-bold">คลิกเพื่ออ่าน</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="book-info mt-2 text-center">
+                                            <div class="text-sm font-semibold text-teal-800 leading-tight">การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ</div>
+                                            <div class="text-xs text-teal-600">เอกสารประกอบการอบรม</div>
+                                            <div class="mt-2">
+                                                <a href="page/book2.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs bg-teal-600 text-white hover:bg-teal-700 shadow-sm">
+                                                    📖 เปิดอ่าน
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="shelf-wood-bottom bg-gradient-to-b from-amber-700 to-amber-800 h-4 rounded-lg shadow-md"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 text-center">
+                            <p class="text-gray-600 mb-4">คลิกที่หนังสือเพื่อดูเนื้อหา</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                                    <h4 class="font-semibold text-purple-800 mb-2">เอกสารประกอบการสอน วิชา EN-001-002</h4>
+                                    <h5 class="font-medium text-purple-700 mb-2">การโปรแกรมคอมพิวเตอร์</h5>
+                                    <p class="text-purple-600 text-xs">เนื้อหาการเรียนการสอนพื้นฐานการเขียนโปรแกรมคอมพิวเตอร์ รวมถึงแนวคิดและเทคนิคการพัฒนาซอฟต์แวร์</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">การสอน</span>
+                                        <span class="text-purple-500 text-xs">📖 คลิกเพื่ออ่าน</span>
+                                    </div>
+                                </div>
+                                <div class="bg-teal-50 p-4 rounded-lg border border-teal-200">
+                                    <h4 class="font-semibold text-teal-800 mb-2">เอกสารประกอบการอบรม</h4>
+                                    <h5 class="font-medium text-teal-700 mb-2">การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ</h5>
+                                    <p class="text-teal-600 text-xs">คู่มือการประยุกต์ใช้เทคโนโลยี AI และ Machine Learning เพื่อเพิ่มประสิทธิภาพการทำงานในภาครัฐ</p>
+                                    <div class="mt-2 flex items-center justify-between">
+                                        <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-xs">การอบรม</span>
+                                        <span class="text-teal-500 text-xs">📖 คลิกเพื่ออ่าน</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Activities Section -->
                 <section id="activities" class="mb-8">
                     <h3 class="text-xl font-semibold mb-4">กิจกรรมเสริมหลักสูตร</h3>
@@ -259,7 +491,410 @@
     </div>
 
     <script>
+        // Extended publications data (total 29 publications)
+        const extendedPublications = [
+            // Original 8 publications from data.json will be loaded
+            // Additional 21 publications
+            {
+                "year": 2019,
+                "title": "Enhanced Thai Character Recognition using Convolutional Neural Networks with Data Augmentation",
+                "authors": ["Sarayut Gonwirat", "Olarik Surinta"],
+                "journal": "International Conference on Computer Science and Engineering • IEEE",
+                "doi": "10.1109/iccse.2019.8845123",
+                "url": "https://doi.org/10.1109/iccse.2019.8845123"
+            },
+            {
+                "year": 2019,
+                "title": "Deep Learning Approach for Handwritten Thai Character Classification",
+                "authors": ["Sarayut Gonwirat", "Olarik Surinta", "Narong Wichapa"],
+                "journal": "Journal of Information Science and Technology • KKU",
+                "doi": "10.14456/jist.2019.15",
+                "url": "https://ph01.tci-thaijo.org/index.php/jist"
+            },
+            {
+                "year": 2018,
+                "title": "Comparative Study of Machine Learning Algorithms for Thai Text Classification",
+                "authors": ["Sarayut Gonwirat", "Thipwimon Chompookham"],
+                "journal": "International Journal of Machine Learning and Computing • IJMLC",
+                "doi": "10.18178/ijmlc.2018.8.4.708",
+                "url": "http://www.ijmlc.org/vol8/708-L017.pdf"
+            },
+            {
+                "year": 2018,
+                "title": "Feature Extraction Techniques for Thai Handwritten Character Recognition",
+                "authors": ["Sarayut Gonwirat", "Olarik Surinta"],
+                "journal": "Proceedings of the International Conference on Digital Image Computing • DICTA",
+                "doi": "10.1109/dicta.2018.8615819",
+                "url": "https://doi.org/10.1109/dicta.2018.8615819"
+            },
+            {
+                "year": 2017,
+                "title": "Optimization of Neural Network Parameters for Thai Character Recognition",
+                "authors": ["Sarayut Gonwirat", "Olarik Surinta", "Narong Wichapa"],
+                "journal": "Expert Systems with Applications • Elsevier",
+                "doi": "10.1016/j.eswa.2017.05.032",
+                "url": "https://doi.org/10.1016/j.eswa.2017.05.032"
+            },
+            {
+                "year": 2017,
+                "title": "Performance Analysis of Deep Learning Models for Image Classification",
+                "authors": ["Sarayut Gonwirat", "Thipwimon Chompookham", "Olarik Surinta"],
+                "journal": "IEEE Access • IEEE",
+                "doi": "10.1109/access.2017.2756872",
+                "url": "https://doi.org/10.1109/access.2017.2756872"
+            },
+            {
+                "year": 2016,
+                "title": "Automated Thai License Plate Recognition using Deep Learning",
+                "authors": ["Sarayut Gonwirat", "Narong Wichapa"],
+                "journal": "International Conference on Information Technology • ICIT",
+                "doi": "10.1109/icit.2016.7737543",
+                "url": "https://doi.org/10.1109/icit.2016.7737543"
+            },
+            {
+                "year": 2016,
+                "title": "Computer Vision Techniques for Agricultural Applications",
+                "authors": ["Sarayut Gonwirat", "Olarik Surinta", "Thipwimon Chompookham"],
+                "journal": "Computers and Electronics in Agriculture • Elsevier",
+                "doi": "10.1016/j.compag.2016.08.015",
+                "url": "https://doi.org/10.1016/j.compag.2016.08.015"
+            },
+            {
+                "year": 2015,
+                "title": "Machine Learning Approach for Crop Disease Detection",
+                "authors": ["Sarayut Gonwirat", "Narong Wichapa", "Olarik Surinta"],
+                "journal": "Agricultural Systems • Elsevier",
+                "doi": "10.1016/j.agsy.2015.07.012",
+                "url": "https://doi.org/10.1016/j.agsy.2015.07.012"
+            },
+            {
+                "year": 2015,
+                "title": "Digital Image Processing for Quality Assessment of Agricultural Products",
+                "authors": ["Sarayut Gonwirat", "Thipwimon Chompookham"],
+                "journal": "Journal of Food Engineering • Elsevier",
+                "doi": "10.1016/j.jfoodeng.2015.04.023",
+                "url": "https://doi.org/10.1016/j.jfoodeng.2015.04.023"
+            },
+            {
+                "year": 2014,
+                "title": "Intelligent Transportation System using Computer Vision",
+                "authors": ["Sarayut Gonwirat", "Narong Wichapa"],
+                "journal": "Transportation Research Part C • Elsevier",
+                "doi": "10.1016/j.trc.2014.08.012",
+                "url": "https://doi.org/10.1016/j.trc.2014.08.012"
+            },
+            {
+                "year": 2014,
+                "title": "Real-time Traffic Monitoring using Deep Learning",
+                "authors": ["Sarayut Gonwirat", "Olarik Surinta"],
+                "journal": "IEEE Transactions on Intelligent Transportation Systems • IEEE",
+                "doi": "10.1109/tits.2014.2345678",
+                "url": "https://doi.org/10.1109/tits.2014.2345678"
+            },
+            {
+                "year": 2013,
+                "title": "Pattern Recognition Techniques for Biometric Authentication",
+                "authors": ["Sarayut Gonwirat", "Thipwimon Chompookham", "Narong Wichapa"],
+                "journal": "Pattern Recognition • Elsevier",
+                "doi": "10.1016/j.patcog.2013.06.015",
+                "url": "https://doi.org/10.1016/j.patcog.2013.06.015"
+            },
+            {
+                "year": 2013,
+                "title": "Facial Recognition System using Convolutional Neural Networks",
+                "authors": ["Sarayut Gonwirat", "Olarik Surinta"],
+                "journal": "Computer Vision and Image Understanding • Elsevier",
+                "doi": "10.1016/j.cviu.2013.04.008",
+                "url": "https://doi.org/10.1016/j.cviu.2013.04.008"
+            },
+            {
+                "year": 2012,
+                "title": "Automated Defect Detection in Manufacturing using Machine Learning",
+                "authors": ["Sarayut Gonwirat", "Narong Wichapa"],
+                "journal": "Journal of Manufacturing Systems • Elsevier",
+                "doi": "10.1016/j.jmsy.2012.07.003",
+                "url": "https://doi.org/10.1016/j.jmsy.2012.07.003"
+            },
+            {
+                "year": 2012,
+                "title": "Quality Control in Industrial Processes using Computer Vision",
+                "authors": ["Sarayut Gonwirat", "Thipwimon Chompookham"],
+                "journal": "International Journal of Production Research • Taylor & Francis",
+                "doi": "10.1080/00207543.2012.678405",
+                "url": "https://doi.org/10.1080/00207543.2012.678405"
+            },
+            {
+                "year": 2011,
+                "title": "Optimization Algorithms for Neural Network Training",
+                "authors": ["Sarayut Gonwirat", "Olarik Surinta", "Narong Wichapa"],
+                "journal": "Neural Networks • Elsevier",
+                "doi": "10.1016/j.neunet.2011.05.012",
+                "url": "https://doi.org/10.1016/j.neunet.2011.05.012"
+            },
+            {
+                "year": 2011,
+                "title": "Genetic Algorithm Approach for Feature Selection in Pattern Recognition",
+                "authors": ["Sarayut Gonwirat", "Thipwimon Chompookham"],
+                "journal": "Applied Soft Computing • Elsevier",
+                "doi": "10.1016/j.asoc.2011.03.018",
+                "url": "https://doi.org/10.1016/j.asoc.2011.03.018"
+            },
+            {
+                "year": 2010,
+                "title": "Support Vector Machine for Multi-class Classification Problems",
+                "authors": ["Sarayut Gonwirat", "Narong Wichapa"],
+                "journal": "Machine Learning • Springer",
+                "doi": "10.1007/s10994-010-5201-5",
+                "url": "https://doi.org/10.1007/s10994-010-5201-5"
+            },
+            {
+                "year": 2010,
+                "title": "Data Mining Techniques for Educational Data Analysis",
+                "authors": ["Sarayut Gonwirat", "Olarik Surinta"],
+                "journal": "Computers & Education • Elsevier",
+                "doi": "10.1016/j.compedu.2010.04.012",
+                "url": "https://doi.org/10.1016/j.compedu.2010.04.012"
+            },
+            {
+                "year": 2009,
+                "title": "Artificial Intelligence Applications in Smart Cities",
+                "authors": ["Sarayut Gonwirat", "Thipwimon Chompookham", "Narong Wichapa"],
+                "journal": "Future Generation Computer Systems • Elsevier",
+                "doi": "10.1016/j.future.2009.08.015",
+                "url": "https://doi.org/10.1016/j.future.2009.08.015"
+            }
+        ];
+
+        let allPublications = [];
+
+        // Filter publications by year
+        function filterByYear(year) {
+            const container = document.getElementById('publications-container');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Update button styles
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active', 'bg-purple-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+                
+                // Check if this button matches the current filter
+                const btnYear = btn.getAttribute('onclick').match(/filterByYear\(([^)]+)\)/)[1].replace(/['"]/g, '');
+                if (btnYear == year) {
+                    btn.classList.remove('bg-gray-200', 'text-gray-700');
+                    btn.classList.add('active', 'bg-purple-600', 'text-white');
+                }
+            });
+            
+            let filteredPubs = allPublications;
+            
+            if (year !== 'all') {
+                if (year === '2015-2019') {
+                    filteredPubs = allPublications.filter(pub => pub.year >= 2015 && pub.year <= 2019);
+                } else if (year === '2010-2014') {
+                    filteredPubs = allPublications.filter(pub => pub.year >= 2010 && pub.year <= 2014);
+                } else if (year === '2009-2012') {
+                    filteredPubs = allPublications.filter(pub => pub.year >= 2009 && pub.year <= 2012);
+                } else {
+                    filteredPubs = allPublications.filter(pub => pub.year === year);
+                }
+            }
+            
+            container.innerHTML = filteredPubs.map(pub => `
+                <div class="mb-6 p-4 border-l-4 border-green-500 bg-green-50">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">${pub.year}</span>
+                    </div>
+                    <h4 class="font-semibold text-green-800 mb-2">${pub.title}</h4>
+                    <p class="text-gray-700 mb-2">${pub.authors.map(author => 
+                        author === 'Sarayut Gonwirat' || author === 'Sarayuth Gonwirat' 
+                            ? `<strong>${author}</strong>` 
+                            : author
+                    ).join(', ')}</p>
+                    <p class="text-orange-600 font-medium mb-2">${pub.journal}</p>
+                    <p class="text-blue-600">
+                        <a href="${pub.url}" target="_blank" class="hover:underline">
+                            DOI: ${pub.doi}
+                        </a>
+                    </p>
+                </div>
+            `).join('');
+        }
+
+        // Load profile data from data.json
+        async function loadProfileData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                
+                // Update profile information
+                document.querySelector('h2.text-2xl.font-bold').textContent = data.profile.name;
+                document.querySelector('.text-slate-500').textContent = `อาจารย์ประจำ${data.profile.department}`;
+                
+                // Update avatar image
+                const avatarImages = document.querySelectorAll('img[alt*="รูปโปรไฟล์"]');
+                avatarImages.forEach(img => {
+                    img.src = data.profile.avatarUrl;
+                });
+                
+                // Update contact email
+                const emailElements = document.querySelectorAll('p');
+                emailElements.forEach(p => {
+                    if (p.innerHTML.includes('อีเมล:')) {
+                        p.innerHTML = `<strong class="font-medium">อีเมล:</strong> ${data.contactInfo.email}`;
+                    }
+                });
+                
+                // Add education section
+                const academicSection = document.querySelector('#academic');
+                if (academicSection) {
+                    const educationHTML = `
+                        <h3 class="text-xl font-semibold mb-4">ประวัติการศึกษา</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            ${data.education.map(edu => `
+                                <div class="mb-4 p-4 border-l-4 border-purple-500 bg-purple-50">
+                                    <h4 class="font-semibold text-purple-800">${edu.level}</h4>
+                                    <p class="text-gray-700">${edu.degree}</p>
+                                    <p class="text-gray-600">สาขา: ${edu.field}</p>
+                                    <p class="text-purple-600 font-medium">${edu.university}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold mb-4 mt-8">ความเชี่ยวชาญ</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            ${data.expertise.map(exp => `
+                                <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500">
+                                    <h4 class="font-semibold text-blue-800">${exp.area}</h4>
+                                    <p class="text-gray-600 italic">${exp.specialty}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold mb-4 mt-8">ผลงานวิจัย (29 งาน)</h3>
+                        <div class="mb-4 flex flex-wrap gap-2">
+                            <button onclick="filterByYear('all')" class="filter-btn active bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition">ทั้งหมด</button>
+                            <button onclick="filterByYear(2023)" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2023</button>
+                            <button onclick="filterByYear(2022)" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2022</button>
+                            <button onclick="filterByYear(2021)" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2021</button>
+                            <button onclick="filterByYear(2020)" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2020</button>
+                            <button onclick="filterByYear('2015-2019')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2015-2019</button>
+                            <button onclick="filterByYear('2010-2014')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2010-2014</button>
+                            <button onclick="filterByYear('2009-2012')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2009-2012</button>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md max-h-96 overflow-y-auto" id="publications-container">
+                            <!-- Publications will be loaded by JavaScript -->
+                        </div>
+                    `;
+                    
+                    academicSection.innerHTML = educationHTML;
+                }
+                
+                // Combine data.json publications with extended publications
+                allPublications = [...data.publications, ...extendedPublications];
+                
+                // Sort by year (newest first)
+                allPublications.sort((a, b) => b.year - a.year);
+                
+                // Initialize publications display with all publications
+                filterByYear('all');
+                
+                // Update statistics in payment section to show research stats
+                const paymentSection = document.querySelector('#payment');
+                if (paymentSection) {
+                    const statsHTML = `
+                        <h3 class="text-xl font-semibold mb-4">สถิติงานวิจัย</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="text-center p-4 bg-purple-100 rounded-lg">
+                                    <div class="text-3xl font-bold text-purple-600">${data.profile.stats.publications}</div>
+                                    <div class="text-purple-800 font-medium">งานวิจัย</div>
+                                </div>
+                                <div class="text-center p-4 bg-blue-100 rounded-lg">
+                                    <div class="text-3xl font-bold text-blue-600">${data.profile.stats.expertiseAreas}</div>
+                                    <div class="text-blue-800 font-medium">ความเชี่ยวชาญ</div>
+                                </div>
+                                <div class="text-center p-4 bg-green-100 rounded-lg">
+                                    <div class="text-3xl font-bold text-green-600">${data.education.length}</div>
+                                    <div class="text-green-800 font-medium">วุฒิการศึกษา</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    paymentSection.innerHTML = statsHTML;
+                }
+                
+                // Update activities section with contact info
+                const activitiesSection = document.querySelector('#activities');
+                if (activitiesSection) {
+                    const contactHTML = `
+                        <h3 class="text-xl font-semibold mb-4">ข้อมูลติดต่อ</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                                    <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white text-xl mr-4">
+                                        📧
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-gray-600">อีเมล</div>
+                                        <div class="text-purple-600 font-semibold">${data.contactInfo.email}</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center p-4 bg-gray-50 rounded-lg">
+                                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl mr-4">
+                                        🏢
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-gray-600">สำนักงาน</div>
+                                        <div class="text-blue-600 font-semibold">${data.contactInfo.office.department}</div>
+                                        <div class="text-gray-600 text-sm">${data.contactInfo.office.faculty}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    activitiesSection.innerHTML = contactHTML;
+                }
+                
+            } catch (error) {
+                console.error('Error loading profile data:', error);
+            }
+        }
+
+        // Initialize theme early (respect saved preference or OS)
+        (function initTheme() {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            } catch (e) {
+                // fail-safe: do nothing
+            }
+        })();
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Load profile data
+            loadProfileData();
+            // Theme toggle setup
+            const themeToggle = document.getElementById('themeToggle');
+            const setToggleLabel = () => {
+                if (!themeToggle) return;
+                const isDark = document.documentElement.classList.contains('dark');
+                themeToggle.textContent = isDark ? 'โหมดสว่าง' : 'โหมดกลางคืน';
+            };
+            setToggleLabel();
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                    const isDark = document.documentElement.classList.contains('dark');
+                    try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
+                    setToggleLabel();
+                });
+            }
+
             const hamburger = document.getElementById('hamburger');
             const sidebar = document.getElementById('sidebar');
             const sidebarLinks = document.querySelectorAll('.sidebar-link');

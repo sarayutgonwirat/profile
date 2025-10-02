@@ -1,0 +1,184 @@
+{
+    "profile": {
+      "name": "อาจารย์ ดร.สรายุทธ กรวิรัตน์",
+      "avatarUrl": "https://kris.ksu.ac.th/avatar/1757661241726_pic.jpg",
+      "department": "สาขาวิชาวิศวกรรมคอมพิวเตอร์",
+      "faculty": "คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม",
+      "stats": {
+        "publications": 29,
+        "academicWorks": 0,
+        "expertiseAreas": 5
+      }
+    },
+    "contactInfo": {
+      "email": "sarayut.go@ksu.ac.th",
+      "office": {
+        "faculty": "คณะวิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม",
+        "department": "สาขาวิชาวิศวกรรมคอมพิวเตอร์"
+      }
+    },
+    "education": [
+      {
+        "level": "ปริญญาเอก",
+        "degree": "ปริญญาดุษฎีบัณฑิต",
+        "field": "เทคโนโลยีสารสนเทศ",
+        "university": "มหาวิทยาลัยมหาสารคาม"
+      },
+      {
+        "level": "ปริญญาโท",
+        "degree": "วิศวกรรมศาสตรมหาบัณฑิต",
+        "field": "วิศวกรรมคอมพิวเตอร์",
+        "university": "สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหาร"
+      },
+      {
+        "level": "ปริญญาตรี",
+        "degree": "วิศวกรรมศาสตรบัณฑิต",
+        "field": "วิศวกรรมคอมพิวเตอร์",
+        "university": "สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหาร"
+      }
+    ],
+    "expertise": [
+      {
+        "area": "คอมพิวเตอร์วิชัน",
+        "specialty": "Computer Vision Applications"
+      },
+      {
+        "area": "การวิจัยดำเนินงาน",
+        "specialty": "Optimization Algorithms"
+      },
+      {
+        "area": "การเรียนรู้เชิงลึก",
+        "specialty": "Ensemble Deep Learning"
+      },
+      {
+        "area": "เกษตรดิจิทัล",
+        "specialty": "Agricultural AI"
+      },
+      {
+        "area": "ระบบขนส่งอัจฉริยะ",
+        "specialty": "Tourism Route Optimization"
+      }
+    ],
+    "publications": [
+      {
+        "year": 2023,
+        "title": "Double AMIS-ensemble deep learning for skin cancer classification",
+        "authors": [
+          "Kanchana Sethanan",
+          "Rapeepan Pitakaso",
+          "Thanatkit Srichok",
+          "Surajet Khonjun",
+          "Piyarat Thannipat",
+          "Surasak Wanram",
+          "Chawis Boonmee",
+          "Sarayut Gonwirat",
+          "Prem Enkvetchakul",
+          "Chutchai Kaewta",
+          "Natthapong Nanthasamroeng"
+        ],
+        "journal": "Expert Systems with Applications • Elsevier BV",
+        "doi": "10.1016/j.eswa.2023.121047",
+        "url": "https://doi.org/10.1016/j.eswa.2023.121047"
+      },
+      {
+        "year": 2022,
+        "title": "Embedded AMIS-Deep Learning with Dialog-Based Object Query System for Multi-Class Tuberculosis Drug Response Classification",
+        "authors": [
+          "Chutinun Prasitpuriprecha",
+          "Rapeepan Pitakaso",
+          "Sarayut Gonwirat",
+          "Prem Enkvetchakul",
+          "Thanawadee Preeprem",
+          "Sirima Suvarnakuta Jantama",
+          "Chutchai Kaewta",
+          "Nantawatana Weerayuth",
+          "Thanatkij Srichok",
+          "Surajet Khonjun",
+          "Natthapong Nanthasamroeng"
+        ],
+        "journal": "Diagnostics • MDPI AG",
+        "doi": "10.3390/diagnostics12122980",
+        "url": "https://doi.org/10.3390/diagnostics12122980"
+      },
+      {
+        "year": 2022,
+        "title": "Drug-Resistant Tuberculosis Treatment Recommendation, and Multi-Class Tuberculosis Detection and Classification Using Ensemble Deep Learning-Based System",
+        "authors": [
+          "Chutinun Prasitpuriprecha",
+          "Sirima Suvarnakuta Jantama",
+          "Thanawadee Preeprem",
+          "Rapeepan Pitakaso",
+          "Thanatkij Srichok",
+          "Surajet Khonjun",
+          "Nantawatana Weerayuth",
+          "Sarayut Gonwirat",
+          "Prem Enkvetchakul",
+          "Chutchai Kaewta",
+          "Natthapong Nanthasamroeng"
+        ],
+        "journal": "Pharmaceuticals • MDPI AG",
+        "doi": "10.3390/ph16010013",
+        "url": "https://doi.org/10.3390/ph16010013"
+      },
+      {
+        "year": 2022,
+        "title": "A combined deep learning model based on the ideal distance weighting method for fake news detection",
+        "authors": [
+          "Sarayut Gonwirat",
+          "Atchara Choompol",
+          "Narong Wichapa"
+        ],
+        "journal": "International Journal of Data and Network Science • Growing Science",
+        "doi": "10.5267/j.ijdns.2022.1.003",
+        "url": "https://doi.org/10.5267/j.ijdns.2022.1.003"
+      },
+      {
+        "year": 2022,
+        "title": "DeblurGAN-CNN: Effective Image Denoising and Recognition for Noisy Handwritten Characters",
+        "authors": [
+          "Sarayut Gonwirat",
+          "Olarik Surinta"
+        ],
+        "journal": "IEEE Access • Institute of Electrical and Electronics Engineers (IEEE)",
+        "doi": "10.1109/access.2022.3201560",
+        "url": "https://doi.org/10.1109/access.2022.3201560"
+      },
+      {
+        "year": 2021,
+        "title": "Optimal weighted parameters of ensemble convolutional neural networks based on a differential evolution algorithm for enhancing pornographic image classification",
+        "authors": [
+          "Sarayut Gonwirat",
+          "Olarik Surinta"
+        ],
+        "journal": "Engineering and Applied Science Research • Faculty of Engineering, Khon Kaen University",
+        "doi": "https://doi.org/10.14456/easr.2021.58",
+        "url": "https://ph01.tci-thaijo.org/index.php/easr"
+      },
+      {
+        "year": 2020,
+        "title": "Improving Recognition of Thai Handwritten Characters with Deep Convolutional Neural Networks",
+        "authors": [
+          "Sarayut Gonwirat",
+          "Olarik Surinta"
+        ],
+        "journal": "Proceedings of the 2020 The 3rd International Conference on Information Science and System • ACM",
+        "doi": "10.1145/3388176.3388181",
+        "url": "https://doi.org/10.1145/3388176.3388181"
+      },
+      {
+        "year": 2020,
+        "title": "Plant Leaf Image Recognition using Multiple-grid Based Local Descriptor and Dimensionality Reduction Approach",
+        "authors": [
+          "Thipwimon Chompookham",
+          "Sarayuth Gonwirat",
+          "Siriwiwat Lata",
+          "Sirawan Phiphiphatphaisit",
+          "Olarik Surinta"
+        ],
+        "journal": "Proceedings of the 2020 The 3rd International Conference on Information Science and System • ACM",
+        "doi": "10.1145/3388176.3388180",
+        "url": "https://doi.org/10.1145/3388176.3388180"
+      }
+    ]
+  }
+  
