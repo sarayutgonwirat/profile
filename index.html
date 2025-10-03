@@ -90,6 +90,35 @@
             max-width: 160px;
         }
 
+        /* ---------- Style-only enhancements ---------- */
+        /* Global, readable and modern typography scaling */
+        :root { --base-font-size: 17px; }
+        html { font-size: var(--base-font-size); }
+        h1 { font-size: clamp(1.75rem, 2vw + 1rem, 2.25rem); }
+        h2 { font-size: clamp(1.5rem, 1.6vw + 1rem, 2rem); }
+        h3 { font-size: clamp(1.25rem, 1.2vw + 0.9rem, 1.5rem); }
+        body, p, li, span { line-height: 1.75; }
+
+        /* Bookshelf: keep book covers aligned regardless of title line count */
+        .books-row { align-items: flex-start; }
+        .book-info { width: 160px; }
+        /* First line (title) under cover: fixed min-height and centered */
+        .book-info > div:first-child {
+            min-height: 2.75rem; /* ~44px fits up to 2 lines comfortably */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.3;
+        }
+        /* Optional: gracefully clamp to 2 lines without changing HTML */
+        .book-info > div:first-child {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
         .book-spine {
             position: relative;
             box-shadow: 
@@ -217,47 +246,24 @@
 
             <!-- Content Area -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 dark:bg-slate-900 p-6 md:p-8">
-                <!-- Hero Section -->
-                <section class="mb-8">
-                    <div class="relative overflow-hidden rounded-xl p-8 md:p-10 bg-gradient-to-r from-purple-600 to-teal-500 text-white shadow-lg">
+                <!-- Profile Section -->
+                <section id="profile" class="mb-8">
+                    <div class="relative overflow-hidden rounded-xl p-6 md:p-8 bg-gradient-to-r from-purple-600 to-teal-500 text-white shadow-lg flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
                         <div class="relative z-10">
-                            <h1 class="text-2xl md:text-3xl font-extrabold mb-2">คลังเอกสารสอนและอบรม</h1>
-                            <p class="opacity-90 mb-6">เข้าถึงเนื้อหาได้รวดเร็ว เลือกหัวข้อที่ต้องการ แล้วเริ่มอ่านได้ทันที</p>
-                            <div class="flex flex-wrap gap-3">
-                                <a href="page/book1.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/95 text-slate-800 hover:bg-white shadow-md transition">
-                                    <span>การโปรแกรมคอมพิวเตอร์</span>
-                                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">EN-001-002</span>
-                                </a>
-                                <a href="page/book2.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/95 text-slate-800 hover:bg-white shadow-md transition">
-                                    <span>AI ในงานภาครัฐ</span>
-                                    <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded">คู่มืออบรม</span>
-                                </a>
+                            <img class="h-28 w-28 rounded-full object-cover ring-4 border-4 border-white/30" src="profile.jpg" alt="รูปโปรไฟล์ขนาดใหญ่">
+                        </div>
+                        <div class="flex-1 text-center md:text-left relative z-10">
+                            <h2 class="text-2xl md:text-3xl font-bold">อาจารย์ ดร.สรายุทธ กรวิรัตน์</h2>
+                            <p class="text-white/90 mb-3">อาจารย์ประจำสาขาวิชาวิศวกรรมคอมพิวเตอร์</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                                <p class="bg-white/10 px-3 py-1.5 rounded-md"><strong class="font-medium">สาขาวิชา:</strong> วิศวกรรมคอมพิวเตอร์</p>
+                                <p class="bg-white/10 px-3 py-1.5 rounded-md"><strong class="font-medium">อีเมล:</strong> sarayut.go@ksu.ac.th</p>
+                                <p class="bg-white/10 px-3 py-1.5 rounded-md"><strong class="font-medium">คณะ:</strong> วิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม</p>
+                                <p class="bg-white/10 px-3 py-1.5 rounded-md"><strong class="font-medium">สถาบัน:</strong> มหาวิทยาลัยกาฬสินธุ์</p>
                             </div>
                         </div>
                         <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
                         <div class="absolute -left-10 -bottom-10 w-52 h-52 bg-black/10 rounded-full blur-2xl"></div>
-                    </div>
-                </section>
-                <!-- Profile Section -->
-                <section id="profile" class="mb-8">
-                    <div class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-                        <div class="relative">
-                            <img class="h-28 w-28 rounded-full object-cover ring-4" style="border: 4px solid #e8d5ff;" src="profile.jpg" alt="รูปโปรไฟล์ขนาดใหญ่">
-                            <button class="absolute bottom-0 right-0 text-white p-1.5 rounded-full transition" style="background-color: #5e3996;" onmouseover="this.style.backgroundColor='#44287a'" onmouseout="this.style.backgroundColor='#5e3996'">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L15.232 5.232z" /></svg>
-                            </button>
-                        </div>
-                        <div class="flex-1 text-center md:text-left">
-                            <h2 class="text-2xl font-bold">อาจารย์ ดร.สรายุทธ กรวิรัตน์</h2>
-                            <p class="text-slate-500">อาจารย์ประจำสาขาวิชาวิศวกรรมคอมพิวเตอร์</p>
-                            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                                <p><strong class="font-medium">สาขาวิชา:</strong> วิศวกรรมคอมพิวเตอร์</p>
-                                <p><strong class="font-medium">อีเมล:</strong> sarayut.go@ksu.ac.th</p>
-                                <p><strong class="font-medium">คณะ:</strong> วิศวกรรมศาสตร์และเทคโนโลยีอุตสาหกรรม</p>
-                                <p><strong class="font-medium">สถาบัน:</strong> มหาวิทยาลัยกาฬสินธุ์</p>
-                            </div>
-                        </div>
-                       
                     </div>
                 </section>
 
@@ -381,9 +387,9 @@
                             <!-- Bookshelf styling -->
                             <div class="bookshelf mb-8">
                                 <div class="shelf-wood"></div>
-                                <div class="books-row flex justify-center items-end space-x-4 pb-4">
+                                <div class="books-row flex justify-center items-start space-x-4 pb-4">
                                     <!-- Book 1 -->
-                                    <div class="book-item group cursor-pointer transform hover:scale-105 transition-all duration-300">
+                                    <div class="book-item group cursor-pointer transform hover:scale-105 transition-all duration-300 flex flex-col">
                                         <a href="page/book1.html" class="block">
                                             <div class="book-container relative" style="height: 220px; width: 160px;">
                                                 <img src="cover/cover1.png" alt="เอกสารประกอบการสอน วิชา EN-001-002 การโปรแกรมคอมพิวเตอร์" 
@@ -395,8 +401,8 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <div class="book-info mt-2 text-center">
-                                            <div class="text-sm font-semibold text-purple-800 leading-tight">การโปรแกรมคอมพิวเตอร์</div>
+                                        <div class="book-info mt-2 text-center" style="width: 160px;">
+                                            <div class="text-sm font-semibold text-purple-800 leading-tight h-10 flex items-center justify-center">การโปรแกรมคอมพิวเตอร์</div>
                                             <div class="text-xs text-purple-600">EN-001-002</div>
                                             <div class="mt-2">
                                                 <a href="page/book1.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs bg-purple-600 text-white hover:bg-purple-700 shadow-sm">
@@ -407,7 +413,7 @@
                                     </div>
 
                                     <!-- Book 2 -->
-                                    <div class="book-item group cursor-pointer transform hover:scale-105 transition-all duration-300">
+                                    <div class="book-item group cursor-pointer transform hover:scale-105 transition-all duration-300 flex flex-col">
                                         <a href="page/book2.html" class="block">
                                             <div class="book-container relative" style="height: 220px; width: 160px;">
                                                 <img src="cover/cover2.png" alt="เอกสารประกอบการอบรม - การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ" 
@@ -419,8 +425,8 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <div class="book-info mt-2 text-center">
-                                            <div class="text-sm font-semibold text-teal-800 leading-tight">การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ</div>
+                                        <div class="book-info mt-2 text-center" style="width: 160px;">
+                                            <div class="text-sm font-semibold text-teal-800 leading-tight h-10 flex items-center justify-center">การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ</div>
                                             <div class="text-xs text-teal-600">เอกสารประกอบการอบรม</div>
                                             <div class="mt-2">
                                                 <a href="page/book2.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md text-xs bg-teal-600 text-white hover:bg-teal-700 shadow-sm">
@@ -437,7 +443,7 @@
                         <div class="mt-6 text-center">
                             <p class="text-gray-600 mb-4">คลิกที่หนังสือเพื่อดูเนื้อหา</p>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                                <a href="page/book1.html" class="bg-purple-50 p-4 rounded-lg border border-purple-200 hover:bg-purple-100 transition cursor-pointer">
                                     <h4 class="font-semibold text-purple-800 mb-2">เอกสารประกอบการสอน วิชา EN-001-002</h4>
                                     <h5 class="font-medium text-purple-700 mb-2">การโปรแกรมคอมพิวเตอร์</h5>
                                     <p class="text-purple-600 text-xs">เนื้อหาการเรียนการสอนพื้นฐานการเขียนโปรแกรมคอมพิวเตอร์ รวมถึงแนวคิดและเทคนิคการพัฒนาซอฟต์แวร์</p>
@@ -445,8 +451,8 @@
                                         <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">การสอน</span>
                                         <span class="text-purple-500 text-xs">📖 คลิกเพื่ออ่าน</span>
                                     </div>
-                                </div>
-                                <div class="bg-teal-50 p-4 rounded-lg border border-teal-200">
+                                </a>
+                                <a href="page/book2.html" class="bg-teal-50 p-4 rounded-lg border border-teal-200 hover:bg-teal-100 transition cursor-pointer">
                                     <h4 class="font-semibold text-teal-800 mb-2">เอกสารประกอบการอบรม</h4>
                                     <h5 class="font-medium text-teal-700 mb-2">การใช้ปัญญาประดิษฐ์ในทำงานภาครัฐ</h5>
                                     <p class="text-teal-600 text-xs">คู่มือการประยุกต์ใช้เทคโนโลยี AI และ Machine Learning เพื่อเพิ่มประสิทธิภาพการทำงานในภาครัฐ</p>
@@ -454,7 +460,7 @@
                                         <span class="bg-teal-100 text-teal-800 px-2 py-1 rounded text-xs">การอบรม</span>
                                         <span class="text-teal-500 text-xs">📖 คลิกเพื่ออ่าน</span>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -530,25 +536,7 @@
                 }
             }
             
-            container.innerHTML = filteredPubs.map(pub => `
-                <div class="mb-6 p-4 border-l-4 border-green-500 bg-green-50">
-                    <div class="flex items-center mb-2">
-                        <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">${pub.year}</span>
-                    </div>
-                    <h4 class="font-semibold text-green-800 mb-2">${pub.title}</h4>
-                    <p class="text-gray-700 mb-2">${pub.authors.map(author => 
-                        author === 'Sarayut Gonwirat' || author === 'Sarayuth Gonwirat' 
-                            ? `<strong>${author}</strong>` 
-                            : author
-                    ).join(', ')}</p>
-                    <p class="text-orange-600 font-medium mb-2">${pub.journal}</p>
-                    <p class="text-blue-600">
-                        <a href="${pub.url}" target="_blank" class="hover:underline">
-                            DOI: ${pub.doi}
-                        </a>
-                    </p>
-                </div>
-            `).join('');
+            container.innerHTML = filteredPubs.map(pub => `<div class="mb-2 p-2 border-l-4 border-green-500 bg-green-50 rounded-md"><div class="flex flex-wrap items-center gap-2"><span class="inline-flex items-center bg-purple-600 text-white px-2 py-0.5 rounded text-xs font-semibold whitespace-nowrap">${pub.year}</span><h4 class="font-semibold text-green-800 text-xs leading-tight flex-1 min-w-0">${pub.title}</h4><a href="${pub.url}" target="_blank" class="text-blue-600 hover:underline text-xs whitespace-nowrap">DOI: ${pub.doi}</a></div><div class="mt-1 flex flex-wrap items-center gap-1.5 text-xs"><span class="text-gray-600">${pub.authors.map(author => author === 'Sarayut Gonwirat' || author === 'Sarayuth Gonwirat' ? `<strong>${author}</strong>` : author).join(', ')}</span><span class="text-gray-400">•</span><span class="text-orange-600 font-medium">${pub.journal}</span></div></div>`).join('');
         }
 
         // Load profile data from data.json
@@ -579,29 +567,35 @@
                 const academicSection = document.querySelector('#academic');
                 if (academicSection) {
                     const educationHTML = `
-                        <h3 class="text-xl font-semibold mb-4">ประวัติการศึกษา</h3>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            ${data.education.map(edu => `
-                                <div class="mb-4 p-4 border-l-4 border-purple-500 bg-purple-50">
-                                    <h4 class="font-semibold text-purple-800">${edu.level}</h4>
-                                    <p class="text-gray-700">${edu.degree}</p>
-                                    <p class="text-gray-600">สาขา: ${edu.field}</p>
-                                    <p class="text-purple-600 font-medium">${edu.university}</p>
-                                </div>
-                            `).join('')}
+                        <h3 class="text-xl font-semibold mb-3">ประวัติการศึกษา</h3>
+                        <div class="bg-white p-3 rounded-lg shadow-md">
+                            <div class="flex flex-wrap gap-2">
+                                ${data.education.map(edu => `
+                                    <div class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 border-l-4 border-purple-500 rounded-md">
+                                        <span class="font-semibold text-purple-800 text-xs whitespace-nowrap">${edu.level}</span>
+                                        <span class="text-gray-400 text-xs">•</span>
+                                        <span class="text-gray-700 text-xs whitespace-nowrap">${edu.degree} (${edu.field})</span>
+                                        <span class="text-gray-400 text-xs">•</span>
+                                        <span class="text-purple-600 font-medium text-xs whitespace-nowrap">${edu.university}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
                         </div>
                         
-                        <h3 class="text-xl font-semibold mb-4 mt-8">ความเชี่ยวชาญ</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            ${data.expertise.map(exp => `
-                                <div class="bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-500">
-                                    <h4 class="font-semibold text-blue-800">${exp.area}</h4>
-                                    <p class="text-gray-600 italic">${exp.specialty}</p>
-                                </div>
-                            `).join('')}
+                        <h3 class="text-xl font-semibold mb-3 mt-6">ความเชี่ยวชาญ</h3>
+                        <div class="bg-white p-3 rounded-lg shadow-md">
+                            <div class="flex flex-wrap gap-2">
+                                ${data.expertise.map(exp => `
+                                    <div class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 border-l-4 border-blue-500 rounded-md">
+                                        <span class="font-semibold text-blue-800 text-xs whitespace-nowrap">${exp.area}</span>
+                                        <span class="text-gray-400 text-xs">•</span>
+                                        <span class="text-gray-600 italic text-xs whitespace-nowrap">${exp.specialty}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
                         </div>
                         
-                        <h3 class="text-xl font-semibold mb-4 mt-8">ผลงานวิจัย (29 งาน)</h3>
+                        <h3 class="text-xl font-semibold mb-3 mt-6">ผลงานวิจัย (29 งาน)</h3>
                         <div class="mb-4 flex flex-wrap gap-2">
                             <button onclick="filterByYear('all')" class="filter-btn active bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 transition">ทั้งหมด</button>
                             <button onclick="filterByYear(2023)" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2023</button>
@@ -612,8 +606,28 @@
                             <button onclick="filterByYear('2010-2014')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2010-2014</button>
                             <button onclick="filterByYear('2009-2012')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-300 transition">2009-2012</button>
                         </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md max-h-96 overflow-y-auto" id="publications-container">
+                        <div class="bg-white p-4 rounded-lg shadow-md max-h-96 overflow-y-auto" id="publications-container">
                             <!-- Publications will be loaded by JavaScript -->
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold mb-3 mt-6">คลังเอกสารสอนและอบรม</h3>
+                        <div class="relative overflow-hidden rounded-xl p-6 md:p-8 bg-gradient-to-r from-purple-600 to-teal-500 text-white shadow-lg">
+                            <div class="relative z-10">
+                                <h4 class="text-xl md:text-2xl font-bold mb-2">เอกสารประกอบการสอนและอบรม</h4>
+                                <p class="opacity-90 mb-4 text-sm">เข้าถึงเนื้อหาได้รวดเร็ว เลือกหัวข้อที่ต้องการ แล้วเริ่มอ่านได้ทันที</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="page/book1.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/95 text-slate-800 hover:bg-white shadow-md transition">
+                                        <span class="font-medium">การโปรแกรมคอมพิวเตอร์</span>
+                                        <span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">EN-001-002</span>
+                                    </a>
+                                    <a href="page/book2.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/95 text-slate-800 hover:bg-white shadow-md transition">
+                                        <span class="font-medium">AI ในงานภาครัฐ</span>
+                                        <span class="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded">คู่มืออบรม</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                            <div class="absolute -left-10 -bottom-10 w-52 h-52 bg-black/10 rounded-full blur-2xl"></div>
                         </div>
                     `;
                     
